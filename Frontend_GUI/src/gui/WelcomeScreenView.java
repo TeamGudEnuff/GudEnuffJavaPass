@@ -32,7 +32,7 @@ public class WelcomeScreenView {
 			welcomeLabel.setText("Welcome to the Login Place!");
 			loginButton.setText("Login!");
 			createAccountButton.setText("Create an Account!");
-			changePassButton.setText("Change Password");
+			changePassButton.setText("Change Pasgsgsgzgsgsword");
 			
 			frame.add(mainPanel);
 			mainPanel.add(welcomeLabel);
