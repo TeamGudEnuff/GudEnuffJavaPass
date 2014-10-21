@@ -47,3 +47,5 @@ public class ChangePasswordView {
 		return mainPanel;
 	}
 }
+
+blahblahblah
