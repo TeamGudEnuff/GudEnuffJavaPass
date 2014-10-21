@@ -12,7 +12,8 @@ public class WelcomeScreenView {
 	LoginView loginView = new LoginView();
 	SignUpView signUpView = new SignUpView();
 	ChangePasswordView changePassView = new ChangePasswordView();
-	
+	final JFrame frame = new JFrame();
+
 	/**
 	 * 
 	 * @param args
@@ -22,12 +23,7 @@ public class WelcomeScreenView {
 			gui.createGUI();
 		}
 		
-		/**
-		 * 
-		 */
-		
 		public void createGUI(){
-			final JFrame frame = new JFrame();
 			final JPanel mainPanel = new JPanel();
 			JLabel welcomeLabel = new JLabel();
 			JButton loginButton = new JButton();
@@ -56,6 +52,7 @@ public class WelcomeScreenView {
 					mainPanel.setVisible(false);
 					frame.add(loginView.getMainPanel());
 					frame.remove(mainPanel);
+					frame.setTitle("Login Here!");
 				}
 			});
 			
@@ -65,6 +62,7 @@ public class WelcomeScreenView {
 					mainPanel.setVisible(false);
 					frame.add(signUpView.getMainPanel());
 					frame.remove(mainPanel);
+					frame.setTitle("Create Your Account You Goofball");
 				}
 			});
 			
@@ -74,8 +72,13 @@ public class WelcomeScreenView {
 					mainPanel.setVisible(false);
 					frame.add(changePassView.getMainPanel());
 					frame.remove(mainPanel);
+					frame.setTitle("Change Your Password");
 				}
 			});
+		}
+		
+		public JFrame getFrame(){
+			return frame;
 		}
 		
 		public void initPanel(){

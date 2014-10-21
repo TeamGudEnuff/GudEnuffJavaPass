@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,6 +39,13 @@ public class SignUpView {
 		signUpPanel.add(confirmPassInput);
 		signUpPanel.add(createAccountButton);
 
+		
+		createAccountButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				//Account will send stuff to server than port you over to the
+				//login screen
+			}
+		});
 		
 	}
 	

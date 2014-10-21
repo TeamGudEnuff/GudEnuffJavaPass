@@ -1,12 +1,16 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class LoginView {
 	JPanel mainPanel = new JPanel();
+
 
 	public void createGUI(){
 		JPanel loginPanel = new JPanel();
@@ -35,6 +39,12 @@ public class LoginView {
 		loginPanel.add(loginButton);
 		loginPanel.add(changePassButton);
 		
+		changePassButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+
+				
+			}	
+		});
 	}
 	
 	public JPanel getMainPanel(){

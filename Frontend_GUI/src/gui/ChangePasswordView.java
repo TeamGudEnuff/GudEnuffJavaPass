@@ -39,7 +39,7 @@ public class ChangePasswordView {
 		changePassPanel.add(newPassInput);
 		changePassPanel.add(confirmChangePassLabel);
 		changePassPanel.add(confirmChangePassInput);
-
+fnslflfseff
 		
 	}
 	
@@ -47,5 +47,3 @@ public class ChangePasswordView {
 		return mainPanel;
 	}
 }
-
-blahblahblah
