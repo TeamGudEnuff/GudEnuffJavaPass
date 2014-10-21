@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -24,16 +26,22 @@ public class WelcomeScreenView {
 		}
 		
 		public void createGUI(){
-			final JPanel mainPanel = new JPanel();
+			final JPanel mainPanel = new JPanel(new FlowLayout());
 			JLabel welcomeLabel = new JLabel();
 			JButton loginButton = new JButton();
 			JButton createAccountButton = new JButton();
 			JButton changePassButton = new JButton();
 			
+			loginButton.setSize(100,100);
 			welcomeLabel.setText("Welcome to the Login Place!");
+			welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
+
 			loginButton.setText("Login!");
+			loginButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 			createAccountButton.setText("Create an Account!");
+			createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 			changePassButton.setText("Change Password");
+			changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 			
 			frame.add(mainPanel);
 			mainPanel.add(welcomeLabel);
@@ -75,6 +83,8 @@ public class WelcomeScreenView {
 					frame.setTitle("Change Your Password");
 				}
 			});
+			loginButton.setSize(100,100);
+
 		}
 		
 		public JFrame getFrame(){

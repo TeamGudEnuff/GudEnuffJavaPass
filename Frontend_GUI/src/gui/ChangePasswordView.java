@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.FlowLayout;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,7 +11,7 @@ public class ChangePasswordView {
 	JPanel mainPanel = new JPanel();
 
 	public void createGUI(){
-		JPanel changePassPanel = new JPanel();
+		JPanel changePassPanel = new JPanel(new FlowLayout());
 		
 		JLabel userNameLabel = new JLabel();
 		JLabel currPasswordLabel = new JLabel();

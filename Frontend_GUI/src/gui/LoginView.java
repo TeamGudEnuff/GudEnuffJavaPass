@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ public class LoginView {
 
 
 	public void createGUI(){
-		JPanel loginPanel = new JPanel();
+		JPanel loginPanel = new JPanel(new FlowLayout());
 		
 		JLabel userNameLabel = new JLabel();
 		JLabel passwordLabel = new JLabel();

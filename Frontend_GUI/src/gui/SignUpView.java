@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -12,7 +13,7 @@ public class SignUpView {
 	JPanel mainPanel = new JPanel();
 	
 	public void createGUI(){
-		JPanel signUpPanel = new JPanel();
+		JPanel signUpPanel = new JPanel(new FlowLayout());
 		
 		JLabel userNameLabel = new JLabel();
 		JLabel passwordLabel = new JLabel();
