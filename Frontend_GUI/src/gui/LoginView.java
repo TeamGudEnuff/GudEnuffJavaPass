@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -10,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class LoginView {
-	JPanel mainPanel = new JPanel();
+	JPanel mainPanel = new JPanel(new FlowLayout());
 
 
 	public void createGUI(){
@@ -26,10 +27,16 @@ public class LoginView {
 		JButton changePassButton = new JButton();
 		
 		userNameLabel.setText("Username: ");
+		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+
 		passwordLabel.setText("Password: ");
-		
+		passwordLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+
 		loginButton.setText("Login Here!");
+		loginButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+
 		changePassButton.setText("Change Password");
+		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		mainPanel.add(loginPanel);
 		loginPanel.add(userNameLabel);

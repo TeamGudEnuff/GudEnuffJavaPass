@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -8,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ChangePasswordView {
-	JPanel mainPanel = new JPanel();
+	JPanel mainPanel = new JPanel(new FlowLayout());
 
 	public void createGUI(){
 		JPanel changePassPanel = new JPanel(new FlowLayout());
@@ -26,11 +27,15 @@ public class ChangePasswordView {
 		JButton createAccountButton = new JButton();
 		
 		userNameLabel.setText("Username: ");
+		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		currPasswordLabel.setText("Current Password: ");
-		newPassLabel.setText("New Password");
+		currPasswordLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		newPassLabel.setText("New Password: ");
+		newPassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		confirmChangePassLabel.setText("Confirm Password: ");
-		
+		confirmChangePassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		createAccountButton.setText("Confirm Password Change!");
+		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		
 		mainPanel.add(changePassPanel);
 		changePassPanel.add(userNameLabel);
@@ -41,6 +46,7 @@ public class ChangePasswordView {
 		changePassPanel.add(newPassInput);
 		changePassPanel.add(confirmChangePassLabel);
 		changePassPanel.add(confirmChangePassInput);
+		changePassPanel.add(createAccountButton);
 		//add more stupid code
 	}
 	
