@@ -16,7 +16,9 @@ public class WelcomeScreenView {
 	LoginView loginView = new LoginView();
 	SignUpView signUpView = new SignUpView();
 	ChangePasswordView changePassView = new ChangePasswordView();
+	
 	final JFrame frame = new JFrame();
+	final JPanel mainPanel = new JPanel(new FlowLayout());
 
 	/**
 	 * 
@@ -28,7 +30,6 @@ public class WelcomeScreenView {
 		}
 		
 		public void createGUI(){
-			final JPanel mainPanel = new JPanel(new FlowLayout());
 			final JPanel welcomePanel = new JPanel(new FlowLayout());
 			JLabel welcomeLabel = new JLabel();
 			JButton loginButton = new JButton();
@@ -60,7 +61,7 @@ public class WelcomeScreenView {
 			
 			loginButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {
-					loginView.createGUI(mainPanel);
+					loginView.createGUI(mainPanel, frame);
 					welcomePanel.setVisible(false);
 					mainPanel.remove(welcomePanel);	
 					frame.setTitle("Login Here!");
@@ -69,20 +70,18 @@ public class WelcomeScreenView {
 			
 			createAccountButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {
-					signUpView.createGUI();
-					mainPanel.setVisible(false);
-					frame.add(signUpView.getMainPanel());
-					frame.remove(mainPanel);
+					signUpView.createGUI(mainPanel, frame);
+					welcomePanel.setVisible(false);
+					frame.remove(welcomePanel);
 					frame.setTitle("Create Your Account You Goofball");
 				}
 			});
 			
 			changePassButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {
-					changePassView.createGUI();
-					mainPanel.setVisible(false);
-					frame.add(changePassView.getMainPanel());
-					frame.remove(mainPanel);
+					changePassView.createGUI(mainPanel, frame);
+					welcomePanel.setVisible(false);
+					frame.remove(welcomePanel);
 					frame.setTitle("Change Your Password");
 				}
 			});

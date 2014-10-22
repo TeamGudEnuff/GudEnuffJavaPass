@@ -2,30 +2,29 @@ package gui;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ChangePasswordView {
-	JPanel mainPanel = new JPanel(new FlowLayout());
 
-	public void createGUI(){
-		JPanel changePassPanel = new JPanel(new FlowLayout());
-		
-		JLabel userNameLabel = new JLabel();
-		JLabel currPasswordLabel = new JLabel();
-		JLabel newPassLabel = new JLabel();
-		JLabel confirmChangePassLabel = new JLabel();
-		
-		JTextField userNameInput = new JTextField("", 15);
-		JTextField currPasswordInput = new JTextField("", 15);
-		JTextField newPassInput = new JTextField("", 15);
-		JTextField confirmChangePassInput = new JTextField("", 15);
-		
-		JButton createAccountButton = new JButton();
-		
+	private JPanel changePassPanel = new JPanel(new FlowLayout());
+	private JLabel userNameLabel = new JLabel();
+	private JLabel currPasswordLabel = new JLabel();
+	private JLabel newPassLabel = new JLabel();
+	private JLabel confirmChangePassLabel = new JLabel();
+	private JTextField userNameInput = new JTextField("", 15);
+	private JTextField currPasswordInput = new JTextField("", 15);
+	private JTextField newPassInput = new JTextField("", 15);
+	private JTextField confirmChangePassInput = new JTextField("", 15);
+	private JButton changePassButton = new JButton();
+	
+	public ChangePasswordView(){
 		userNameLabel.setText("Username: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		currPasswordLabel.setText("Current Password: ");
@@ -34,9 +33,11 @@ public class ChangePasswordView {
 		newPassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		confirmChangePassLabel.setText("Confirm Password: ");
 		confirmChangePassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		createAccountButton.setText("Confirm Password Change!");
-		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		
+		changePassButton.setText("Confirm Password Change!");
+		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+	}
+	
+	public void createGUI(final JPanel mainPanel, final JFrame frame){
 		mainPanel.add(changePassPanel);
 		changePassPanel.add(userNameLabel);
 		changePassPanel.add(userNameInput);
@@ -46,12 +47,13 @@ public class ChangePasswordView {
 		changePassPanel.add(newPassInput);
 		changePassPanel.add(confirmChangePassLabel);
 		changePassPanel.add(confirmChangePassInput);
-		changePassPanel.add(createAccountButton);
-		//add more stupid code
-	}
-	
-	public JPanel getMainPanel(){
-		mainPanel.setLayout(new FlowLayout());
-		return mainPanel;
+		changePassPanel.add(changePassButton);
+		
+		changePassButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Password has been Changed. " +
+						"WRITE CODE HERE TO INTERFACE WITH THE DATABASE!");
+			}
+		});
 	}
 }
