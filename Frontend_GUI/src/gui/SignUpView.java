@@ -1,4 +1,11 @@
 package gui;
+/** Created October 13th, 2014
+ * By: Matthew Jallouk and Adam Claiborne
+ * 
+ * SignUpView class will display the particular view to sign up a user into our 
+ * password database system. This includes setting up a username/password 
+ * combination and sending that combination to the database for storage.
+ */
 
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -12,6 +19,7 @@ import javax.swing.JTextField;
 
 public class SignUpView {
 
+	//Define instance variables for the SignUpView class
 	private JPanel signUpPanel = new JPanel(new FlowLayout());
 	private JLabel userNameLabel = new JLabel();
 	private JLabel passwordLabel = new JLabel();
@@ -21,6 +29,9 @@ public class SignUpView {
 	private JTextField confirmPassInput = new JTextField("", 15);
 	private JButton createAccountButton = new JButton();
 	
+	/** Constructor that will set up the properties for the particular view.
+	 * 
+	 */
 	public SignUpView(){
 		userNameLabel.setText("Username: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -32,8 +43,12 @@ public class SignUpView {
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
 	}
-	
-	public void createGUI(final JPanel mainPanel, final JFrame frame){
+	/** This method actually 
+	 * 
+	 * @param mainPanel
+	 * @param frame
+	 */
+	public void loadGUI(final JPanel mainPanel, final JFrame frame){
 		mainPanel.add(signUpPanel);
 		signUpPanel.add(userNameLabel);
 		signUpPanel.add(userNameInput);

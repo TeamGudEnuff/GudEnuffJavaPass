@@ -1,5 +1,7 @@
 package gui;
-
+/**
+ * 
+ */
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,6 +15,7 @@ import javax.swing.JTextField;
 
 public class ChangePasswordView {
 
+	//Define instance variables for the SignUpView class
 	private JPanel changePassPanel = new JPanel(new FlowLayout());
 	private JLabel userNameLabel = new JLabel();
 	private JLabel currPasswordLabel = new JLabel();
@@ -24,6 +27,9 @@ public class ChangePasswordView {
 	private JTextField confirmChangePassInput = new JTextField("", 15);
 	private JButton changePassButton = new JButton();
 	
+	/**
+	 * 
+	 */
 	public ChangePasswordView(){
 		userNameLabel.setText("Username: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -37,7 +43,12 @@ public class ChangePasswordView {
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 	
-	public void createGUI(final JPanel mainPanel, final JFrame frame){
+	/**
+	 * 
+	 * @param mainPanel
+	 * @param frame
+	 */
+	public void loadGUI(final JPanel mainPanel, final JFrame frame){
 		mainPanel.add(changePassPanel);
 		changePassPanel.add(userNameLabel);
 		changePassPanel.add(userNameInput);
