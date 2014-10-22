@@ -41,12 +41,13 @@ public class SignUpView {
 		confirmPassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		createAccountButton.setText("Create an Account!");
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
-
 	}
-	/** This method actually 
+	
+	/** This method actually loading the GUI into the particular main panel for 
+	 * viewing.
 	 * 
-	 * @param mainPanel
-	 * @param frame
+	 * @param mainPanel				primary panel that holds all sub-panels
+	 * @param frame					frame that holds the main panel
 	 */
 	public void loadGUI(final JPanel mainPanel, final JFrame frame){
 		mainPanel.add(signUpPanel);

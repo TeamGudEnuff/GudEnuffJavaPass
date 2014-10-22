@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,7 +19,7 @@ public class WelcomeScreenView {
 	private SignUpView signUpView = new SignUpView();
 	private ChangePasswordView changePassView = new ChangePasswordView();	
 	private final JFrame frame = new JFrame();
-	private final JPanel mainPanel = new JPanel(new FlowLayout());
+	private final JPanel mainPanel = new JPanel(new GridLayout());
 
 	/**
 	 * 
