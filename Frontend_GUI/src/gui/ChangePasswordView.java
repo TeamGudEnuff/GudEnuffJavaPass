@@ -17,7 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ChangePasswordView {
+public class ChangePasswordView
+{
 
 	//Define instance variables for the ChangePasswordView class
 	private JPanel changePassPanel = new JPanel(new FlowLayout());
@@ -34,7 +35,8 @@ public class ChangePasswordView {
 	/** Constructor to setup the ChangePassword Panel to be added to the frame
 	 * 
 	 */
-	public ChangePasswordView(){
+	public ChangePasswordView()
+	{
 		userNameLabel.setText("Username: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		currPasswordLabel.setText("Current Password: ");
