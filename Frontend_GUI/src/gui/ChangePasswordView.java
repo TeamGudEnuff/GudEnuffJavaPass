@@ -1,12 +1,16 @@
 package gui;
-/**
+/** Created October 13th, 2014
+ * By: Matthew Jallouk and Adam Claiborne
  * 
+ * SignUpView class will display the particular view to sign up a user into our 
+ * password database system. This includes setting up a username/password 
+ * combination and sending that combination to the database for storage.
  */
+
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,8 +31,8 @@ public class ChangePasswordView {
 	private JTextField confirmChangePassInput = new JTextField("", 15);
 	private JButton changePassButton = new JButton();
 	
-	/**
-	 * Constructor to setup the ChangePassword Panel to be added to the frame
+	/** Constructor to setup the ChangePassword Panel to be added to the frame
+	 * 
 	 */
 	public ChangePasswordView(){
 		userNameLabel.setText("Username: ");
@@ -43,10 +47,10 @@ public class ChangePasswordView {
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 	
-	/**
-	 * This method loads the ChangePassword planel onto the main frame
-	 * @param mainPanel
-	 * @param frame
+	/** This method loads the ChangePassword panel onto the main frame.
+	 * 
+	 * @param mainPanel				primary panel that holds all sub-panels
+	 * @param frame					frame that holds the main panel
 	 */
 	public void loadGUI(final JPanel mainPanel, final JFrame frame){
 		mainPanel.add(changePassPanel);
@@ -60,6 +64,10 @@ public class ChangePasswordView {
 		changePassPanel.add(confirmChangePassInput);
 		changePassPanel.add(changePassButton);
 		
+		/* This action listener will talk to the database to change the password
+		 * of the particular username inputed.
+		 * 
+		 */
 		changePassButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Password has been Changed. " +

@@ -46,10 +46,11 @@ public class LoginView {
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 
-	/**
+	/** This method actually loading the LoginView GUI into the particular  
+	 * main panel for viewing.
 	 * 
-	 * @param mainPanel
-	 * @param frame
+	 * @param mainPanel				primary panel that holds all sub-panels
+	 * @param frame					frame that holds the main panel
 	 */
 	public void loadGUI(final JPanel mainPanel, final JFrame frame){
 		mainPanel.add(loginPanel);
@@ -60,6 +61,9 @@ public class LoginView {
 		loginPanel.add(loginButton);
 		loginPanel.add(changePassButton);
 		
+		/* This action listener will log the user into the system by determining
+		 *  if their username/password combination was appropriately correct.
+		 */
 		loginButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				System.out.println("Checking login with the Database...." +
@@ -67,6 +71,9 @@ public class LoginView {
 			}
 		});
 		
+		/* This action listener will display the ChangePasswordView GUI screen.
+		 * 
+		 */
 		changePassButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				changePassView.loadGUI(mainPanel, frame);

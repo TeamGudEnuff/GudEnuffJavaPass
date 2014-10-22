@@ -43,8 +43,8 @@ public class SignUpView {
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 	
-	/** This method actually loading the GUI into the particular main panel for 
-	 * viewing.
+	/** This method actually loading the SignUpView GUI into the particular  
+	 * main panel for viewing.
 	 * 
 	 * @param mainPanel				primary panel that holds all sub-panels
 	 * @param frame					frame that holds the main panel
@@ -59,7 +59,10 @@ public class SignUpView {
 		signUpPanel.add(confirmPassInput);
 		signUpPanel.add(createAccountButton);
 
-		
+		/* This action listener will send the username/password combination to
+		 * the database for storage and determine if the account was created
+		 * successfully.
+		*/
 		createAccountButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
 				//Account will send stuff to server than port you over to the
@@ -68,6 +71,5 @@ public class SignUpView {
 				"WRITE CODE HERE TO INTERFACE WITH THE DATABASE!");
 			}
 		});
-		
 	}
 }
