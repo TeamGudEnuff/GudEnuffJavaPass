@@ -63,6 +63,7 @@ public class ChangePasswordView {
 		changePassPanel.add(confirmChangePassLabel);
 		changePassPanel.add(confirmChangePassInput);
 		changePassPanel.add(changePassButton);
+		frame.setSize(350,300);
 		
 		/* This action listener will talk to the database to change the password
 		 * of the particular username inputed.

@@ -7,6 +7,7 @@ package gui;
  * to choose from in terms of options.
  */
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -24,7 +25,7 @@ public class WelcomeScreenView {
 	private LoginView loginView = new LoginView();
 	private SignUpView signUpView = new SignUpView();
 	private ChangePasswordView changePassView = new ChangePasswordView();	
-	private final JPanel mainPanel = new JPanel(new GridLayout());
+	private final JPanel mainPanel = new JPanel(new BorderLayout());
 
 	/** Constructor to create the WelcomeScreenView for panels to be added. 
 	 *  Creates the first panel to be added.

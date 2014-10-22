@@ -60,6 +60,7 @@ public class LoginView {
 		loginPanel.add(passwordInput);
 		loginPanel.add(loginButton);
 		loginPanel.add(changePassButton);
+		frame.setSize(350,300);
 		
 		/* This action listener will log the user into the system by determining
 		 *  if their username/password combination was appropriately correct.

@@ -58,7 +58,8 @@ public class SignUpView {
 		signUpPanel.add(confirmPassLabel);
 		signUpPanel.add(confirmPassInput);
 		signUpPanel.add(createAccountButton);
-
+		frame.setSize(350,300);
+		
 		/* This action listener will send the username/password combination to
 		 * the database for storage and determine if the account was created
 		 * successfully.
