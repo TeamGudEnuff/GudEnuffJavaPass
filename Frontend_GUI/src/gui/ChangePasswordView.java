@@ -51,6 +51,7 @@ public class ChangePasswordView {
 	}
 	
 	public JPanel getMainPanel(){
+		mainPanel.setLayout(new FlowLayout());
 		return mainPanel;
 	}
 }

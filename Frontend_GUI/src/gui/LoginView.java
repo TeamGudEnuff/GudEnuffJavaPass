@@ -11,21 +11,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class LoginView {
-	JPanel mainPanel = new JPanel(new FlowLayout());
-
-
-	public void createGUI(){
-		JPanel loginPanel = new JPanel(new FlowLayout());
-		
-		JLabel userNameLabel = new JLabel();
-		JLabel passwordLabel = new JLabel();
-		
-		JTextField userNameInput = new JTextField("", 15);
-		JTextField passwordInput = new JTextField("", 15);
-		
-		JButton loginButton = new JButton();
-		JButton changePassButton = new JButton();
-		
+	JPanel loginPanel = new JPanel(new FlowLayout());
+	
+	JLabel userNameLabel = new JLabel();
+	JLabel passwordLabel = new JLabel();
+	
+	JTextField userNameInput = new JTextField("", 15);
+	JTextField passwordInput = new JTextField("", 15);
+	
+	JButton loginButton = new JButton();
+	JButton changePassButton = new JButton();
+	
+	public LoginView(){
 		userNameLabel.setText("Username: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 
@@ -37,6 +34,12 @@ public class LoginView {
 
 		changePassButton.setText("Change Password");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		
+	}
+
+	public void createGUI(JPanel mainPanel){
+		mainPanel.removeAll();
+		loginPanel.removeAll();
 		
 		mainPanel.add(loginPanel);
 		loginPanel.add(userNameLabel);
@@ -55,9 +58,7 @@ public class LoginView {
 		});
 	}
 	
-	public JPanel getMainPanel(){
-		return mainPanel;
-	}
+	
 	
 	
 }

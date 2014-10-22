@@ -4,6 +4,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +29,7 @@ public class WelcomeScreenView {
 		
 		public void createGUI(){
 			final JPanel mainPanel = new JPanel(new FlowLayout());
+			final JPanel welcomePanel = new JPanel(new FlowLayout());
 			JLabel welcomeLabel = new JLabel();
 			JButton loginButton = new JButton();
 			JButton createAccountButton = new JButton();
@@ -44,10 +47,11 @@ public class WelcomeScreenView {
 			changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 			
 			frame.add(mainPanel);
-			mainPanel.add(welcomeLabel);
-			mainPanel.add(loginButton);
-			mainPanel.add(createAccountButton);
-			mainPanel.add(changePassButton);
+			mainPanel.add(welcomePanel);
+			welcomePanel.add(welcomeLabel);
+			welcomePanel.add(loginButton);
+			welcomePanel.add(createAccountButton);
+			welcomePanel.add(changePassButton);
 			
 			frame.setVisible(true);
 			frame.setEnabled(true);
@@ -56,10 +60,9 @@ public class WelcomeScreenView {
 			
 			loginButton.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent arg0) {
-					loginView.createGUI();
-					mainPanel.setVisible(false);
-					frame.add(loginView.getMainPanel());
-					frame.remove(mainPanel);
+					loginView.createGUI(mainPanel);
+					welcomePanel.setVisible(false);
+					mainPanel.remove(welcomePanel);	
 					frame.setTitle("Login Here!");
 				}
 			});
@@ -83,8 +86,6 @@ public class WelcomeScreenView {
 					frame.setTitle("Change Your Password");
 				}
 			});
-			loginButton.setSize(100,100);
-
 		}
 		
 		public JFrame getFrame(){
