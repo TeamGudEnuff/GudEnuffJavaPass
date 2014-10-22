@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public class ChangePasswordView {
 
-	//Define instance variables for the SignUpView class
+	//Define instance variables for the ChangePasswordView class
 	private JPanel changePassPanel = new JPanel(new FlowLayout());
 	private JLabel userNameLabel = new JLabel();
 	private JLabel currPasswordLabel = new JLabel();
@@ -28,7 +28,7 @@ public class ChangePasswordView {
 	private JButton changePassButton = new JButton();
 	
 	/**
-	 * 
+	 * Constructor to setup the ChangePassword Panel to be added to the frame
 	 */
 	public ChangePasswordView(){
 		userNameLabel.setText("Username: ");
@@ -44,7 +44,7 @@ public class ChangePasswordView {
 	}
 	
 	/**
-	 * 
+	 * This method loads the ChangePassword planel onto the main frame
 	 * @param mainPanel
 	 * @param frame
 	 */

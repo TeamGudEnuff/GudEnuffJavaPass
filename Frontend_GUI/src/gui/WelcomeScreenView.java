@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 public class WelcomeScreenView {
 	
-	//Define instance variables for the SignUpView class
+	//Define instance variables for the WelcomeScreenView class
 	private LoginView loginView = new LoginView();
 	private SignUpView signUpView = new SignUpView();
 	private ChangePasswordView changePassView = new ChangePasswordView();	
@@ -22,7 +22,8 @@ public class WelcomeScreenView {
 	private final JPanel mainPanel = new JPanel(new GridLayout());
 
 	/**
-	 * 
+	 * Constructor to create the main frame for panels to be added. 
+	 * Create the first panel to be added.
 	 */
 	public void createGUI(){
 		final JPanel welcomePanel = new JPanel(new FlowLayout());
@@ -82,6 +83,9 @@ public class WelcomeScreenView {
 		});
 	}
 	
+	/**
+	 * Main method to launch the application.
+	 */
 	public static void main(String[] args){
 		WelcomeScreenView gui = new WelcomeScreenView();
 		gui.createGUI();
