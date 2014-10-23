@@ -8,7 +8,6 @@ package gui;
  * to choose from in terms of options.
  */
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -25,7 +24,7 @@ public class WelcomeScreenView
 	private LoginView loginView = new LoginView();
 	private SignUpView signUpView = new SignUpView();
 	private ChangePasswordView changePassView = new ChangePasswordView();
-
+	private DeleteAccountView deleteAccountView = new DeleteAccountView();
 	/**
 	 * Constructor to create the WelcomeScreenView for panels to be added.
 	 * Creates the first panel to be added.
@@ -40,7 +39,8 @@ public class WelcomeScreenView
 		JButton loginButton = new JButton();
 		JButton createAccountButton = new JButton();
 		JButton changePassButton = new JButton();
-
+		JButton deleteButton = new JButton();
+		
 		welcomeLabel.setText("Welcome to the Login Place!");
 		welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 
@@ -50,14 +50,17 @@ public class WelcomeScreenView
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		changePassButton.setText("Change Password");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
-
+		deleteButton.setText("Delete Account");
+		deleteButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		
 		frame.add(mainPanel);
 		mainPanel.add(welcomePanel);
 		welcomePanel.add(welcomeLabel);
 		welcomePanel.add(createAccountButton);
 		welcomePanel.add(loginButton);
 		welcomePanel.add(changePassButton);
-
+		welcomePanel.add(deleteButton);
+		
 		frame.setVisible(true);
 		frame.setEnabled(true);
 		frame.setSize(500, 200);
@@ -103,6 +106,16 @@ public class WelcomeScreenView
 				welcomePanel.setVisible(false);
 				frame.remove(welcomePanel);
 				frame.setTitle("Change Your Password");
+			}
+		});
+		
+		deleteButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0)
+			{
+				deleteAccountView.loadGUI(mainPanel, frame);
+				welcomePanel.setVisible(false);
+				frame.remove(welcomePanel);
+				frame.setTitle("Delete Your Account");
 			}
 		});
 	}

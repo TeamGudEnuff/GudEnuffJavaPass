@@ -39,7 +39,7 @@ public class LoginView
 	private JPasswordField passwordInput = new JPasswordField("", 15);
 	private JButton loginButton = new JButton();
 	private JButton changePassButton = new JButton();
-	private JButton deleteButton = new JButton();
+	private JButton goBackWelcome = new JButton();
 	private ChangePasswordView changePassView = new ChangePasswordView();
 
 	/**
@@ -56,8 +56,8 @@ public class LoginView
 		loginButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		changePassButton.setText("Change Password");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		deleteButton.setText("Delete Account");
-		deleteButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		goBackWelcome.setText("Go back to Welcome Screen");
+		goBackWelcome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class LoginView
 		loginPanel.add(passwordInput);
 		loginPanel.add(loginButton);
 		loginPanel.add(changePassButton);
-		loginPanel.add(deleteButton);
+		loginPanel.add(goBackWelcome);
 		frame.setSize(350, 300);
 
 		/*
@@ -133,15 +133,16 @@ public class LoginView
 				frame.setTitle("Change Your Password");
 			}
 		});
-		deleteButton.addActionListener(new ActionListener()
+		
+		goBackWelcome.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{				
-				DeleteAccountView deleteView = new DeleteAccountView();
-				deleteView.loadGUI(mainPanel, frame);
+				WelcomeScreenView welcomeView = new WelcomeScreenView();
+				welcomeView.loadGUI(mainPanel, frame);
 				loginPanel.setVisible(false);
 				mainPanel.remove(loginPanel);
-				frame.setTitle("Change Your Password");
+				frame.setTitle("Welcome to Login!");
 			}
 		});
 	}
