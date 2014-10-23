@@ -101,7 +101,7 @@ public class ChangePasswordView
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Connection test = new Connection();
+				Connection connect = new Connection();
 				String username = userNameInput.getText();
 				String oldPass = currPasswordInput.getText();
 				String newPass = newPassInput.getText();
@@ -109,7 +109,7 @@ public class ChangePasswordView
 				try
 				{
 					Result createAccount;
-					createAccount = test.change(new ChangePasswordViewModel(
+					createAccount = connect.change(new ChangePasswordViewModel(
 							username, oldPass, newPass, confirmNewPass));
 					if (createAccount.Success())
 					{

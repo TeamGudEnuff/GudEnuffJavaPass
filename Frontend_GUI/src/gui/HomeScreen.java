@@ -8,14 +8,16 @@ package gui;
  * 
  */
 
+import java.awt.GridLayout;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class HomeScreen
 {
 
 	// Instance variables
 	private static JFrame frame;
-
+	private static JPanel mainPanel;
 	/**
 	 * Main method to launch the application.
 	 * 
@@ -24,7 +26,7 @@ public class HomeScreen
 	{
 		createGUI();
 		WelcomeScreenView gui = new WelcomeScreenView();
-		gui.loadGUI(frame);
+		gui.loadGUI(mainPanel, frame);
 	}
 
 	/**
@@ -34,6 +36,7 @@ public class HomeScreen
 	public static void createGUI()
 	{
 		frame = new JFrame();
+		mainPanel = new JPanel(new GridLayout());
 	}
 
 }
