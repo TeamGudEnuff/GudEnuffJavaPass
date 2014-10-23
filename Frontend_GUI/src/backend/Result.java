@@ -10,4 +10,5 @@ public class Result
 	{
 		return StatusCode == 200;
 	}
+	 
 }

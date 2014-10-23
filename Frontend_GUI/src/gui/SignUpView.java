@@ -9,13 +9,18 @@ package gui;
 
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import backend.*;
 
 public class SignUpView {
 
@@ -24,6 +29,7 @@ public class SignUpView {
 	private JLabel userNameLabel = new JLabel();
 	private JLabel passwordLabel = new JLabel();
 	private JLabel confirmPassLabel = new JLabel();
+	private JTextArea accountConditions = new JTextArea("", 10,1);
 	private JTextField userNameInput = new JTextField("", 15);
 	private JTextField passwordInput = new JTextField("", 15);
 	private JTextField confirmPassInput = new JTextField("", 15);
@@ -33,12 +39,18 @@ public class SignUpView {
 	 * 
 	 */
 	public SignUpView(){
-		userNameLabel.setText("Username: ");
+		userNameLabel.setText("Email: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		passwordLabel.setText("Password: ");
 		passwordLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		confirmPassLabel.setText("Confirm Password: ");
 		confirmPassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		accountConditions.setText("Your email must have an '@' symbol in it." +
+				"Your password must have lowercase, uppercase, numbers and " +
+				"special symbols (!, &, *, ?)");
+		accountConditions.setWrapStyleWord(true);
+		//accountConditions.setEnabled(false);
+		accountConditions.setFont(new Font("Time New Roman", Font.BOLD, 18));
 		createAccountButton.setText("Create an Account!");
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
@@ -57,9 +69,11 @@ public class SignUpView {
 		signUpPanel.add(passwordInput);
 		signUpPanel.add(confirmPassLabel);
 		signUpPanel.add(confirmPassInput);
+		signUpPanel.add(accountConditions);
 		signUpPanel.add(createAccountButton);
 		frame.setSize(350,300);
-		
+		frame.setSize(600,600);
+
 		/* This action listener will send the username/password combination to
 		 * the database for storage and determine if the account was created
 		 * successfully.
@@ -68,8 +82,22 @@ public class SignUpView {
 			public void actionPerformed(ActionEvent arg0) {
 				//Account will send stuff to server than port you over to the
 				//login screen
-				System.out.println("Account has been created. " +
-				"WRITE CODE HERE TO INTERFACE WITH THE DATABASE!");
+				Connection test = new Connection();
+				String username = userNameInput.getText();
+				String password = passwordInput.getText();
+				String confirmPass = confirmPassInput.getText();
+				try {
+					Result createAccount = test.Create(
+							new CreateViewModel("username@stupidProject.com", "fakeAccount*1", "fakeAccount*1"));
+					if (createAccount.Success()){
+						System.out.println("Account has been created " +
+								"successfully!");
+					}else{
+						System.out.println("Something went wrong you jag!");
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
