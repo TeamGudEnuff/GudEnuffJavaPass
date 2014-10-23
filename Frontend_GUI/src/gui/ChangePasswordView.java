@@ -7,6 +7,7 @@ package gui;
  * combination and sending that combination to the database for storage.
  */
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class ChangePasswordView
@@ -26,6 +28,7 @@ public class ChangePasswordView
 	private JLabel currPasswordLabel = new JLabel();
 	private JLabel newPassLabel = new JLabel();
 	private JLabel confirmChangePassLabel = new JLabel();
+	private JTextArea accountConditions = new JTextArea("", 7,20);
 	private JTextField userNameInput = new JTextField("", 15);
 	private JTextField currPasswordInput = new JTextField("", 15);
 	private JTextField newPassInput = new JTextField("", 15);
@@ -47,6 +50,15 @@ public class ChangePasswordView
 		confirmChangePassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		changePassButton.setText("Confirm Password Change!");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		
+		accountConditions.setText("Your email must have an '@' symbol in it." +
+				"\nYour password must have lowercase, uppercase, numbers and " +
+				"special symbols (!, &, *, ?)");
+		accountConditions.setLineWrap(true);
+		accountConditions.setWrapStyleWord(true);
+		accountConditions.setEnabled(false);
+		accountConditions.setForeground(Color.BLACK);
+		accountConditions.setFont(new Font("Time New Roman", Font.BOLD, 16));
 	}
 	
 	/** This method loads the ChangePassword panel onto the main frame.
@@ -64,8 +76,9 @@ public class ChangePasswordView
 		changePassPanel.add(newPassInput);
 		changePassPanel.add(confirmChangePassLabel);
 		changePassPanel.add(confirmChangePassInput);
+		changePassPanel.add(accountConditions);
 		changePassPanel.add(changePassButton);
-		frame.setSize(350,300);
+		frame.setSize(350,400);
 		
 		/* This action listener will talk to the database to change the password
 		 * of the particular username inputed.

@@ -7,13 +7,12 @@ package gui;
  * combination and sending that combination to the database for storage.
  */
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +28,7 @@ public class SignUpView {
 	private JLabel userNameLabel = new JLabel();
 	private JLabel passwordLabel = new JLabel();
 	private JLabel confirmPassLabel = new JLabel();
-	private JTextArea accountConditions = new JTextArea("", 10,1);
+	private JTextArea accountConditions = new JTextArea("", 7,20);
 	private JTextField userNameInput = new JTextField("", 15);
 	private JTextField passwordInput = new JTextField("", 15);
 	private JTextField confirmPassInput = new JTextField("", 15);
@@ -39,18 +38,20 @@ public class SignUpView {
 	 * 
 	 */
 	public SignUpView(){
-		userNameLabel.setText("Email: ");
+		userNameLabel.setText("           Email: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		passwordLabel.setText("Password: ");
+		passwordLabel.setText("       Password: ");
 		passwordLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		confirmPassLabel.setText("Confirm Password: ");
 		confirmPassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		accountConditions.setText("Your email must have an '@' symbol in it." +
-				"Your password must have lowercase, uppercase, numbers and " +
+				"\nYour password must have lowercase, uppercase, numbers and " +
 				"special symbols (!, &, *, ?)");
+		accountConditions.setLineWrap(true);
 		accountConditions.setWrapStyleWord(true);
-		//accountConditions.setEnabled(false);
-		accountConditions.setFont(new Font("Time New Roman", Font.BOLD, 18));
+		accountConditions.setEnabled(false);
+		accountConditions.setForeground(Color.BLACK);
+		accountConditions.setFont(new Font("Time New Roman", Font.BOLD, 16));
 		createAccountButton.setText("Create an Account!");
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
@@ -71,8 +72,7 @@ public class SignUpView {
 		signUpPanel.add(confirmPassInput);
 		signUpPanel.add(accountConditions);
 		signUpPanel.add(createAccountButton);
-		frame.setSize(350,300);
-		frame.setSize(600,600);
+		frame.setSize(350,400);
 
 		/* This action listener will send the username/password combination to
 		 * the database for storage and determine if the account was created
