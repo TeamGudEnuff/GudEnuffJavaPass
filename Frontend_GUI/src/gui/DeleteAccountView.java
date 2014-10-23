@@ -135,6 +135,9 @@ public class DeleteAccountView
 			}
 		});
 		
+		/*
+		 * This action listener will display the WelcomeScreen GUI.
+		 */
 		goBackWelcome.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0)
 			{

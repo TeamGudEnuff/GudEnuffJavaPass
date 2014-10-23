@@ -29,8 +29,8 @@ public class WelcomeScreenView
 	 * Constructor to create the WelcomeScreenView for panels to be added.
 	 * Creates the first panel to be added.
 	 * 
-	 * @param frame
-	 *            frame that holds the main panel
+	 * @param manPanel			primary panel that holds all sub-panels
+	 * @param frame	            frame that holds the main panel
 	 */
 	public void loadGUI(final JPanel mainPanel, final JFrame frame)
 	{

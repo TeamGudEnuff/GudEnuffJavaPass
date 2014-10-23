@@ -17,7 +17,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -134,6 +133,9 @@ public class LoginView
 			}
 		});
 		
+		/*
+		 * This action listener will display the WelcomeScreen GUI.
+		 */
 		goBackWelcome.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)

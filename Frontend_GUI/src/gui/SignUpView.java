@@ -76,10 +76,8 @@ public class SignUpView
 	 * This method actually loading the SignUpView GUI into the particular main
 	 * panel for viewing.
 	 * 
-	 * @param mainPanel
-	 *            primary panel that holds all sub-panels
-	 * @param frame
-	 *            frame that holds the main panel
+	 * @param mainPanel            primary panel that holds all sub-panels
+	 * @param frame		           frame that holds the main panel
 	 */
 	public void loadGUI(final JPanel mainPanel, final JFrame frame)
 	{
@@ -139,6 +137,9 @@ public class SignUpView
 			}
 		});
 
+		/*
+		 * This action listener will display the LoginView GUI.
+		 */
 		goLogin.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
@@ -150,6 +151,9 @@ public class SignUpView
 			}
 		});
 		
+		/*
+		 * This action listener will display the WelcomeScreen GUI.
+		 */
 		goBackWelcome.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0)
 			{
