@@ -6,7 +6,6 @@ import java.net.URI;
 import java.net.URL;
 import java.io.IOException;
 import java.io.File;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpVersion;
@@ -20,6 +19,7 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 public class Connection
 {
@@ -27,7 +27,7 @@ public class Connection
 
 	public Connection()
 	{
-		this.BaseUrl = "http://r4clucky14-001-site8.smarterasp.net/api/Account";
+		this.BaseUrl = "http://r4clucky14-001-site8.smarterasp.net/api/Account/";
 	}
 	public Connection(String BaseUrl)
 	{
@@ -91,6 +91,9 @@ public class Connection
 	        {
 	            result.StatusCode = response.getStatusLine().getStatusCode();
 	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+	            HttpEntity entity = response.getEntity();
+	             result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	             System.out.println(result.BodyMessage);
 	        }
 	        finally
 	        {
