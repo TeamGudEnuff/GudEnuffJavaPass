@@ -94,13 +94,6 @@ public class DeleteAccountView
 					{
 						JOptionPane.showMessageDialog(frame,
 								"Account was successfully deleted!");
-						// Re-direct to home page
-
-						SignUpView signUpView = new SignUpView();
-						signUpView.loadGUI(mainPanel, frame);
-						deletePanel.setVisible(false);
-						mainPanel.remove(deletePanel);
-						frame.setTitle("Create an Account");
 					}
 					else
 					{
