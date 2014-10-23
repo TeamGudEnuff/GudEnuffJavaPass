@@ -34,7 +34,13 @@ public class Connection
 	{
 		this.BaseUrl = BaseUrl;
 	}
+	
 
+	/**
+	 * Checks to make sure the server is connecting properly.
+	 * @return A Result containing information from the server.
+	 * @throws IOException
+	 */
 	public Result Status() throws IOException
 	{
 		//String requestUrl = "Status/";
@@ -64,13 +70,55 @@ public class Connection
         }
 	}
 
-	public Result Login( LogInViewModel model)
+
+	/**
+	 * Logs In a User to the Server
+	 * @param model Contains information to be sent to the server.
+	 * @return A Result containing information from the server.
+	 * @throws IOException
+	 */
+	public Result Login( LogInViewModel model) throws IOException
 	{
 		String requestUrl = "Login/";
+        Result result = new Result();
 
-		//connection
-		return new Result();
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try
+        {
+        	HttpUriRequest httpPost = RequestBuilder.post()
+                    .setUri(new URI(this.BaseUrl + requestUrl))
+                    .addParameter("Email", model.Email)
+                    .addParameter("Password", model.Password)
+                    .build();
+			
+	        CloseableHttpResponse response = httpclient.execute(httpPost);
+        
+	        try
+	        {
+	            result.StatusCode = response.getStatusLine().getStatusCode();
+	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+                HttpEntity entity = response.getEntity();
+	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	        }
+	        finally
+	        {
+	        	response.close();
+	        }
+		}
+        finally
+        {
+            httpclient.close();
+    		return result;
+        }
 	}
+	
+	
+	/**
+	 * Creates a new Account on the Server
+	 * @param model Contains information to be sent to the server.
+	 * @return A Result containing information from the server.
+	 * @throws IOException
+	 */
 	public Result Create( CreateViewModel model) throws IOException
 	{
 		String requestUrl = "Create/";
@@ -106,6 +154,14 @@ public class Connection
     		return result;
         }
 	}
+
+	
+	/**
+	 * Allows the ability to Change Password for an Account.
+	 * @param model Contains information to be sent to the server.
+	 * @return A Result containing information from the server.
+	 * @throws IOException
+	 */
 	public Result Change( ChangePasswordViewModel model) throws IOException
 	{
 		String requestUrl = "Change/";
@@ -119,6 +175,47 @@ public class Connection
                     .addParameter("Email", model.Email)
                     .addParameter("OldPassword", model.OldPassword)
                     .addParameter("NewPassword", model.NewPassword)
+                    .build();
+			
+	        CloseableHttpResponse response = httpclient.execute(httpPost);
+        
+	        try
+	        {
+	            result.StatusCode = response.getStatusLine().getStatusCode();
+	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+                HttpEntity entity = response.getEntity();
+	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	        }
+	        finally
+	        {
+	        	response.close();
+	        }
+		}
+        finally
+        {
+            httpclient.close();
+    		return result;
+        }
+	}
+
+
+	/**
+	 * Allows the ability to delete the Account
+	 * @param model Contains information to be sent to the server.
+	 * @return A Result containing information from the server.
+	 * @throws IOException
+	 */
+	public Result Delete( DeleteAccountViewModel model) throws IOException
+	{
+		String requestUrl = "Delete/";
+        Result result = new Result();
+
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try
+        {
+        	HttpUriRequest httpPost = RequestBuilder.post()
+                    .setUri(new URI(this.BaseUrl + requestUrl))
+                    .addParameter("Email", model.Email)
                     .build();
 			
 	        CloseableHttpResponse response = httpclient.execute(httpPost);
