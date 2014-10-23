@@ -13,6 +13,8 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -87,16 +89,19 @@ public class SignUpView {
 				String password = passwordInput.getText();
 				String confirmPass = confirmPassInput.getText();
 				try {
-					Result createAccount = test.Create(
-							new CreateViewModel("username@stupidProject.com", "fakeAccount*1", "fakeAccount*1"));
+					Result createAccount;
+					createAccount = test.create(
+							new CreateViewModel(username, password, confirmPass));
 					if (createAccount.Success()){
 						System.out.println("Account has been created " +
 								"successfully!");
 					}else{
-						System.out.println("Something went wrong you jag!");
+						System.out.println("Something went wrong!");
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
+				} catch(URISyntaxException uri){
+					uri.printStackTrace();
 				}
 			}
 		});

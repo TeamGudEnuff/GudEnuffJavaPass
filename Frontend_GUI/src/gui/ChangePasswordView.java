@@ -12,12 +12,15 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import backend.*;
 
 public class ChangePasswordView
 {
@@ -86,8 +89,26 @@ public class ChangePasswordView
 		 */
 		changePassButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Password has been Changed. " +
-						"WRITE CODE HERE TO INTERFACE WITH THE DATABASE!");
+				Connection test = new Connection();
+				String username = userNameInput.getText();
+				String oldPass = currPasswordInput.getText();
+				String newPass = newPassInput.getText();
+				String confirmNewPass = confirmChangePassInput.getText();
+				try {
+					Result createAccount;
+					createAccount = test.change(
+							new ChangePasswordViewModel(username, oldPass, newPass, confirmNewPass));
+					if (createAccount.Success()){
+						System.out.println("Account password has been changed " +
+								"successfully!");
+					}else{
+						System.out.println("Something went wrong!");
+					}
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch(URISyntaxException uri){
+					uri.printStackTrace();
+				}
 			}
 		});
 	}

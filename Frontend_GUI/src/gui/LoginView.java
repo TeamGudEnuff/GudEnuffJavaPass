@@ -14,11 +14,14 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import backend.*;
 
 public class LoginView {
 	
@@ -67,8 +70,24 @@ public class LoginView {
 		 */
 		loginButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				System.out.println("Checking login with the Database...." +
-						"WRITE MORE CODE HERE!");
+				Connection test = new Connection();
+				String username = userNameInput.getText();
+				String password = passwordInput.getText();
+				try {
+					Result createAccount;
+					createAccount = test.login(
+							new LogInViewModel(username, password));
+					if (createAccount.Success()){
+						System.out.println("Account password has been changed " +
+								"successfully!");
+					}else{
+						System.out.println("Something went wrong!");
+					}
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch(URISyntaxException uri){
+					uri.printStackTrace();
+				}
 			}
 		});
 		
@@ -79,7 +98,6 @@ public class LoginView {
 			public void actionPerformed(ActionEvent arg0) {
 				changePassView.loadGUI(mainPanel, frame);
 				loginPanel.setVisible(false);
-				//frame.add(changePassView);
 				mainPanel.remove(loginPanel);
 				frame.setTitle("Change Your Password");
 			}	
