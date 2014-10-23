@@ -39,6 +39,7 @@ public class SignUpView
 	private JPasswordField confirmPassInput = new JPasswordField("", 15);
 	private JButton createAccountButton = new JButton();
 	private JButton goLogin = new JButton();
+	private JButton goBackWelcome = new JButton();
 	private LoginView loginView = new LoginView();
 
 	/**
@@ -66,8 +67,9 @@ public class SignUpView
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		goLogin.setText("Login to your Account!");
 		goLogin.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		
-		//passwordInput.set
+		goBackWelcome.setText("Go back to Welcome Screen");
+		goBackWelcome.setFont(new Font("Times New Roman", Font.BOLD, 18));
+
 	}
 
 	/**
@@ -91,6 +93,7 @@ public class SignUpView
 		signUpPanel.add(accountConditions);
 		signUpPanel.add(createAccountButton);
 		signUpPanel.add(goLogin);
+		signUpPanel.add(goBackWelcome);
 		frame.setSize(350, 400);
 
 		/*
@@ -144,6 +147,17 @@ public class SignUpView
 				signUpPanel.setVisible(false);
 				mainPanel.remove(signUpPanel);
 				frame.setTitle("Login Here!");
+			}
+		});
+		
+		goBackWelcome.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0)
+			{
+				WelcomeScreenView welcomeScreen = new WelcomeScreenView();
+				welcomeScreen.loadGUI(mainPanel, frame);
+				signUpPanel.setVisible(false);
+				mainPanel.remove(signUpPanel);
+				frame.setTitle("Welcome to Login!!");
 			}
 		});
 	}

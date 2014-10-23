@@ -39,6 +39,7 @@ public class ChangePasswordView
 	private JPasswordField newPassInput = new JPasswordField("", 15);
 	private JPasswordField confirmChangePassInput = new JPasswordField("", 15);
 	private JButton changePassButton = new JButton();
+	private JButton goBackWelcome = new JButton();
 
 	/**
 	 * Constructor to setup the ChangePassword Panel to be added to the frame
@@ -67,7 +68,8 @@ public class ChangePasswordView
 		accountConditions.setEnabled(false);
 		accountConditions.setForeground(Color.BLACK);
 		accountConditions.setFont(new Font("Time New Roman", Font.BOLD, 16));
-
+		goBackWelcome.setText("Go back to Welcome Screen");
+		goBackWelcome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 
 	/**
@@ -91,6 +93,7 @@ public class ChangePasswordView
 		changePassPanel.add(confirmChangePassInput);
 		changePassPanel.add(accountConditions);
 		changePassPanel.add(changePassButton);
+		changePassPanel.add(goBackWelcome);
 		frame.setSize(350, 400);
 
 		/*
@@ -116,11 +119,6 @@ public class ChangePasswordView
 						JOptionPane.showMessageDialog(frame,
 								"Account password has been changed"
 										+ " successfully!");
-						WelcomeScreenView loginView = new WelcomeScreenView();
-						loginView.loadGUI(mainPanel, frame);
-						changePassPanel.setVisible(false);
-						mainPanel.remove(changePassPanel);
-						frame.setTitle("Login To Your Account!");
 					} else
 					{
 						JOptionPane
@@ -138,6 +136,17 @@ public class ChangePasswordView
 				{
 					uri.printStackTrace();
 				}
+			}
+		});
+		
+		goBackWelcome.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0)
+			{
+				WelcomeScreenView welcomeScreen = new WelcomeScreenView();
+				welcomeScreen.loadGUI(mainPanel, frame);
+				changePassPanel.setVisible(false);
+				mainPanel.remove(changePassPanel);
+				frame.setTitle("Welcome to Login!!");
 			}
 		});
 	}

@@ -35,7 +35,8 @@ public class DeleteAccountView
 	private JPasswordField passwordInput = new JPasswordField("", 15);
 	private JButton deleteButton = new JButton();
 	private JButton cancelButton = new JButton();
-
+	private JButton goBackWelcome = new JButton();
+	
 	/**
 	 * Constructor that will set up the properties for the particular view.
 	 * 
@@ -50,6 +51,8 @@ public class DeleteAccountView
 		deleteButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		cancelButton.setText("Cancel");
 		cancelButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		goBackWelcome.setText("Go back to Welcome Screen");
+		goBackWelcome.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 
 	/**
@@ -68,6 +71,7 @@ public class DeleteAccountView
 		deletePanel.add(passwordInput);
 		deletePanel.add(deleteButton);
 		deletePanel.add(cancelButton);
+		deletePanel.add(goBackWelcome);
 		frame.setSize(350, 300);
 
 		/*
@@ -128,6 +132,17 @@ public class DeleteAccountView
 				deletePanel.setVisible(false);
 				mainPanel.remove(deletePanel);
 				frame.setTitle("Log In To Your Account");
+			}
+		});
+		
+		goBackWelcome.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0)
+			{
+				WelcomeScreenView welcomeScreen = new WelcomeScreenView();
+				welcomeScreen.loadGUI(mainPanel, frame);
+				deletePanel.setVisible(false);
+				mainPanel.remove(deletePanel);
+				frame.setTitle("Welcome to Login!!");
 			}
 		});
 	}

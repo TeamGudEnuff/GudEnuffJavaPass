@@ -8,7 +8,8 @@ package gui;
  * 
  */
 
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -36,7 +37,7 @@ public class HomeScreen
 	public static void createGUI()
 	{
 		frame = new JFrame();
-		mainPanel = new JPanel(new GridLayout());
+		mainPanel = new JPanel(new BorderLayout());
 	}
 
 }
