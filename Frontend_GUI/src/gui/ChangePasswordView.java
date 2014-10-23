@@ -17,6 +17,7 @@ import java.net.URISyntaxException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -99,10 +100,15 @@ public class ChangePasswordView
 					createAccount = test.change(
 							new ChangePasswordViewModel(username, oldPass, newPass, confirmNewPass));
 					if (createAccount.Success()){
-						System.out.println("Account password has been changed " +
-								"successfully!");
+						JOptionPane.showMessageDialog(frame, 
+									"Account password has been changed" +
+									" successfully!");
 					}else{
-						System.out.println("Something went wrong!");
+						JOptionPane.showMessageDialog(frame, 
+									"Account password changed failed!\n" +
+									"Either your password confirms didn't\nmatch " +
+									"or your username/password doesn't\nfit our " +
+									"standards.");
 					}
 				} catch (IOException e1) {
 					e1.printStackTrace();

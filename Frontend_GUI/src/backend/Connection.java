@@ -3,7 +3,6 @@ package backend;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.io.IOException;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
