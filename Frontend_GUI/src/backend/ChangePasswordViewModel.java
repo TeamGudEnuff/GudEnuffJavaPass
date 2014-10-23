@@ -10,20 +10,21 @@ public class ChangePasswordViewModel
 	private String email;
 	private String oldPassword;
 	private String newPassword;
-	private String newConfirmPassword;
+	private String confirmNewPassword;
 
 	/**
 	 * Constructs Change Password View Model object
 	 * @param email Email of User
 	 * @param oldPassword Old Password of User
 	 * @param newPassword New Password of User
+	 * @param confirmNewPassword Confirmation of New Password of User
 	 */
-	public ChangePasswordViewModel(String email, String oldPassword, String newPassword, String newConfirmPassword)
+	public ChangePasswordViewModel(String email, String oldPassword, String newPassword, String confirmNewPassword)
 	{
 		this.email = email;
 		this.oldPassword = oldPassword;
 		this.newPassword = newPassword;
-		this.newConfirmPassword = newConfirmPassword;
+		this.confirmNewPassword = confirmNewPassword;
 	}
 	
 	/**
@@ -56,6 +57,6 @@ public class ChangePasswordViewModel
 	 */
 	public String getConfirmNewPassword()
 	{
-		return this.newConfirmPassword;
+		return this.confirmNewPassword;
 	}
 }

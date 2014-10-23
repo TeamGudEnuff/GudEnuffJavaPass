@@ -39,7 +39,7 @@ public class Connection
 	 * @return A Result containing information from the server.
 	 * @throws IOException
 	 */
-	public Result Status() throws IOException
+	public Result status() throws IOException
 	{
 		//String requestUrl = "Status/";
 		String requestUrl = "";
@@ -77,7 +77,7 @@ public class Connection
 	 * @throws IOException
 	 * @throws URISyntaxException 
 	 */
-	public Result Login( LogInViewModel model) throws IOException, URISyntaxException
+	public Result login( LogInViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Login/";
         Result result = new Result();
@@ -121,7 +121,7 @@ public class Connection
 	 * @throws IOException
 	 * @throws URISyntaxException 
 	 */
-	public Result Create( CreateViewModel model) throws IOException, URISyntaxException
+	public Result create( CreateViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Create/";
         Result result = new Result();
@@ -166,7 +166,7 @@ public class Connection
 	 * @throws IOException
 	 * @throws URISyntaxException 
 	 */
-	public Result Change( ChangePasswordViewModel model) throws IOException, URISyntaxException
+	public Result change( ChangePasswordViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Change/";
         Result result = new Result();
@@ -212,7 +212,7 @@ public class Connection
 	 * @throws IOException
 	 * @throws URISyntaxException 
 	 */
-	public Result Delete( DeleteAccountViewModel model) throws IOException, URISyntaxException
+	public Result delete( DeleteAccountViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Delete/";
         Result result = new Result();
