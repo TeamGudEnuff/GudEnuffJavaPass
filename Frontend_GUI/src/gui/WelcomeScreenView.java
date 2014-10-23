@@ -25,7 +25,6 @@ public class WelcomeScreenView
 	private LoginView loginView = new LoginView();
 	private SignUpView signUpView = new SignUpView();
 	private ChangePasswordView changePassView = new ChangePasswordView();
-	private final JPanel mainPanel = new JPanel(new BorderLayout());
 
 	/**
 	 * Constructor to create the WelcomeScreenView for panels to be added.
@@ -34,7 +33,7 @@ public class WelcomeScreenView
 	 * @param frame
 	 *            frame that holds the main panel
 	 */
-	public void loadGUI(final JFrame frame)
+	public void loadGUI(final JPanel mainPanel, final JFrame frame)
 	{
 		final JPanel welcomePanel = new JPanel(new FlowLayout());
 		JLabel welcomeLabel = new JLabel();

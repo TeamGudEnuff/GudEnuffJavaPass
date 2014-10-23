@@ -104,14 +104,14 @@ public class SignUpView
 			{
 				// Account will send stuff to server than port you over to the
 				// login screen
-				Connection test = new Connection();
+				Connection connect = new Connection();
 				String username = userNameInput.getText();
 				String password = passwordInput.getText();
 				String confirmPass = confirmPassInput.getText();
 				try
 				{
 					Result createAccount;
-					createAccount = test.create(new CreateViewModel(username,
+					createAccount = connect.create(new CreateViewModel(username,
 							password, confirmPass));
 					if (createAccount.Success())
 					{

@@ -83,13 +83,13 @@ public class LoginView
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Connection test = new Connection();
+				Connection connect = new Connection();
 				String username = userNameInput.getText();
 				String password = passwordInput.getText();
 				try
 				{
 					Result createAccount;
-					createAccount = test.login(new LogInViewModel(username,
+					createAccount = connect.login(new LogInViewModel(username,
 							password));
 					if (createAccount.Success())
 					{
