@@ -1,16 +1,30 @@
 package backend;
 
+
+/** Created October 13th, 2014
+ * 
+ * @author James
+ * View Model for Deleting Actions
+ */
 public class DeleteAccountViewModel
 {
-	public String Email;
+	public String email;
 
-	public DeleteAccountViewModel(String Email)
+	/**
+	 *  Constructor for Delete Account View Model
+	 * 
+	 * @param email Email for Account to Delete
+	 */
+	public DeleteAccountViewModel(String email)
 	{
-		this.Email = Email;
+		this.email = email;
 	}
 
-	public String toJson()
+	/**
+	 * Returns the Email of the Account
+	 */
+	public String getEmail()
 	{
-		return "{ Email: " + Email + " }";
+		return this.email;
 	}
 }

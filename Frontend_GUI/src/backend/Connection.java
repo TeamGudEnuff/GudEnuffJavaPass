@@ -1,27 +1,25 @@
 package backend;
 
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URL;
+import java.net.URISyntaxException;
 import java.io.IOException;
-import java.io.File;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpVersion;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.fluent.Request;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
+/** Created October 14, 2014
+ * 
+ * @author James
+ * 
+ * Connection Class that acts as a service layer to interact with a RESTful 
+ * 
+ */
 public class Connection
 {
 	private String BaseUrl;
@@ -55,8 +53,10 @@ public class Connection
         
 	        try
 	        {
-	            result.StatusCode = response.getStatusLine().getStatusCode();
-	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+	            int statusCode = response.getStatusLine().getStatusCode();
+	            String statusMessage = response.getStatusLine().getReasonPhrase();
+	            result = new Result(statusCode, statusMessage, "");
+	    		return result;
 	        }
 	        finally
 	        {
@@ -66,7 +66,6 @@ public class Connection
         finally
         {
             httpclient.close();
-    		return result;
         }
 	}
 
@@ -76,8 +75,9 @@ public class Connection
 	 * @param model Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public Result Login( LogInViewModel model) throws IOException
+	public Result Login( LogInViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Login/";
         Result result = new Result();
@@ -87,18 +87,20 @@ public class Connection
         {
         	HttpUriRequest httpPost = RequestBuilder.post()
                     .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.Email)
-                    .addParameter("Password", model.Password)
+                    .addParameter("Email", model.getEmail())
+                    .addParameter("Password", model.getPassword())
                     .build();
 			
 	        CloseableHttpResponse response = httpclient.execute(httpPost);
         
 	        try
 	        {
-	            result.StatusCode = response.getStatusLine().getStatusCode();
-	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+	            int statusCode = response.getStatusLine().getStatusCode();
+	            String statusMessage = response.getStatusLine().getReasonPhrase();
                 HttpEntity entity = response.getEntity();
-	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	            result = new Result(statusCode, statusMessage, bodyMessage);
+	    		return result;
 	        }
 	        finally
 	        {
@@ -108,7 +110,6 @@ public class Connection
         finally
         {
             httpclient.close();
-    		return result;
         }
 	}
 	
@@ -118,8 +119,9 @@ public class Connection
 	 * @param model Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public Result Create( CreateViewModel model) throws IOException
+	public Result Create( CreateViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Create/";
         Result result = new Result();
@@ -129,19 +131,21 @@ public class Connection
         {
         	HttpUriRequest httpPost = RequestBuilder.post()
                     .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.Email)
-                    .addParameter("Password", model.Password)
-                    .addParameter("ConfirmPassword", model.ConfirmPassword)
+                    .addParameter("Email", model.getEmail())
+                    .addParameter("Password", model.getPassword())
+                    .addParameter("ConfirmPassword", model.getConfirmPassword())
                     .build();
 			
 	        CloseableHttpResponse response = httpclient.execute(httpPost);
         
 	        try
 	        {
-	            result.StatusCode = response.getStatusLine().getStatusCode();
-	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+	            int statusCode = response.getStatusLine().getStatusCode();
+	            String statusMessage = response.getStatusLine().getReasonPhrase();
                 HttpEntity entity = response.getEntity();
-	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	            result = new Result(statusCode, statusMessage, bodyMessage);
+	    		return result;
 	        }
 	        finally
 	        {
@@ -151,7 +155,6 @@ public class Connection
         finally
         {
             httpclient.close();
-    		return result;
         }
 	}
 
@@ -161,8 +164,9 @@ public class Connection
 	 * @param model Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public Result Change( ChangePasswordViewModel model) throws IOException
+	public Result Change( ChangePasswordViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Change/";
         Result result = new Result();
@@ -172,19 +176,22 @@ public class Connection
         {
         	HttpUriRequest httpPost = RequestBuilder.post()
                     .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.Email)
-                    .addParameter("OldPassword", model.OldPassword)
-                    .addParameter("NewPassword", model.NewPassword)
+                    .addParameter("Email", model.getEmail())
+                    .addParameter("OldPassword", model.getOldPassword())
+                    .addParameter("NewPassword", model.getNewPassword())
+                    .addParameter("ConfirmNewPassword", model.getConfirmNewPassword())
                     .build();
 			
 	        CloseableHttpResponse response = httpclient.execute(httpPost);
         
 	        try
 	        {
-	            result.StatusCode = response.getStatusLine().getStatusCode();
-	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+	            int statusCode = response.getStatusLine().getStatusCode();
+	            String statusMessage = response.getStatusLine().getReasonPhrase();
                 HttpEntity entity = response.getEntity();
-	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	            result = new Result(statusCode, statusMessage, bodyMessage);
+	    		return result;
 	        }
 	        finally
 	        {
@@ -194,7 +201,6 @@ public class Connection
         finally
         {
             httpclient.close();
-    		return result;
         }
 	}
 
@@ -204,8 +210,9 @@ public class Connection
 	 * @param model Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
+	 * @throws URISyntaxException 
 	 */
-	public Result Delete( DeleteAccountViewModel model) throws IOException
+	public Result Delete( DeleteAccountViewModel model) throws IOException, URISyntaxException
 	{
 		String requestUrl = "Delete/";
         Result result = new Result();
@@ -215,17 +222,19 @@ public class Connection
         {
         	HttpUriRequest httpPost = RequestBuilder.post()
                     .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.Email)
+                    .addParameter("Email", model.getEmail())
                     .build();
 			
 	        CloseableHttpResponse response = httpclient.execute(httpPost);
         
 	        try
 	        {
-	            result.StatusCode = response.getStatusLine().getStatusCode();
-	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+	            int statusCode = response.getStatusLine().getStatusCode();
+	            String statusMessage = response.getStatusLine().getReasonPhrase();
                 HttpEntity entity = response.getEntity();
-	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	            result = new Result(statusCode, statusMessage, bodyMessage);
+	    		return result;
 	        }
 	        finally
 	        {
@@ -235,7 +244,6 @@ public class Connection
         finally
         {
             httpclient.close();
-    		return result;
         }
 	}
 }

@@ -1,18 +1,42 @@
 package backend;
 
+/** Created October 13th, 2014
+ *  
+ * @author James
+ *
+ * Log In View Model for Connecting to the Server
+ */
 public class LogInViewModel
 {
-	public String Email;
-	public String Password;
+	public String email;
+	public String password;
 
-	public LogInViewModel(String Email, String Password)
+	/**
+	 * Constructor for Log In View Model
+	 * 
+	 * @param email The Email of the User to Log in
+	 * @param password The Password of the User to Log in
+	 */
+	public LogInViewModel(String email, String password)
 	{
-		this.Email = Email;
-		this.Password = Password;
+		this.email = email;
+		this.password = password;
 	}
-
-	public String toJson()
+	
+	/**
+	 * 
+	 * @return Returns User's Email
+	 */
+	public String getEmail()
 	{
-		return "{ Email: " + Email + ", Password: " + Password + " }";
+		return this.email;
+	}
+	/**
+	 * 
+	 * @return Return's User's Password
+	 */
+	public String getPassword()
+	{
+		return this.password;
 	}
 }

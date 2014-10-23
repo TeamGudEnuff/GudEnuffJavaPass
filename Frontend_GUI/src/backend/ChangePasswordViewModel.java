@@ -1,61 +1,61 @@
 package backend;
 
-/**
- * View Model for Change Password Actions
+/** Created October 13th, 2014
+ * 
  * @author James
- *
+ * View Model for Change Password Actions
  */
 public class ChangePasswordViewModel
 {
-	private String Email;
-	private String OldPassword;
-	private String NewPassword;
+	private String email;
+	private String oldPassword;
+	private String newPassword;
+	private String newConfirmPassword;
 
 	/**
 	 * Constructs Change Password View Model object
-	 * @param Email Email of User
-	 * @param OldPassword Old Password of User
-	 * @param NewPassword New Password of User
+	 * @param email Email of User
+	 * @param oldPassword Old Password of User
+	 * @param newPassword New Password of User
 	 */
-	public ChangePasswordViewModel(String Email, String OldPassword, String NewPassword)
+	public ChangePasswordViewModel(String email, String oldPassword, String newPassword, String newConfirmPassword)
 	{
-		this.Email = Email;
-		this.OldPassword = OldPassword;
-		this.NewPassword = NewPassword;
-	}
-
-	/**
-	 * 
-	 * @return JSON representation of object
-	 */
-	public String toJson()
-	{
-		return "{ Email: " + Email + ", OldPassword: " + OldPassword + ", NewPassword: " + NewPassword + " }";
+		this.email = email;
+		this.oldPassword = oldPassword;
+		this.newPassword = newPassword;
+		this.newConfirmPassword = newConfirmPassword;
 	}
 	
 	/**
 	 * 
 	 * @return String Representation of Email
 	 */
-	public String GetEmail()
+	public String getEmail()
 	{
-		return this.Email;
+		return this.email;
 	}
 	/**
 	 * 
 	 * @return String Representation of Old Password
 	 */
-	public String GetOldPassword()
+	public String getOldPassword()
 	{
-		return this.OldPassword;
+		return this.oldPassword;
 	}
 	/**
 	 * 
 	 * @return String Representation of New Password
 	 */
-	public String GetNewPassword()
+	public String getNewPassword()
 	{
-		return this.NewPassword;
+		return this.newPassword;
 	}
-	
+	/**
+	 * 
+	 * @return String Representation of Confirm New Password
+	 */
+	public String getConfirmNewPassword()
+	{
+		return this.newConfirmPassword;
+	}
 }
