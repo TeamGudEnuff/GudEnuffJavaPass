@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import backend.*;
@@ -34,8 +35,8 @@ public class SignUpView
 	private JLabel confirmPassLabel = new JLabel();
 	private JTextArea accountConditions = new JTextArea("", 7, 20);
 	private JTextField userNameInput = new JTextField("", 15);
-	private JTextField passwordInput = new JTextField("", 15);
-	private JTextField confirmPassInput = new JTextField("", 15);
+	private JPasswordField passwordInput = new JPasswordField("", 15);
+	private JPasswordField confirmPassInput = new JPasswordField("", 15);
 	private JButton createAccountButton = new JButton();
 	private JButton goLogin = new JButton();
 	private LoginView loginView = new LoginView();
@@ -65,6 +66,8 @@ public class SignUpView
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		goLogin.setText("Login to your Account!");
 		goLogin.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		
+		//passwordInput.set
 	}
 
 	/**

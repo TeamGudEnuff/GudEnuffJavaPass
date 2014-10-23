@@ -20,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import backend.*;
@@ -34,9 +35,9 @@ public class ChangePasswordView
 	private JLabel confirmChangePassLabel = new JLabel();
 	private JTextArea accountConditions = new JTextArea("", 7, 20);
 	private JTextField userNameInput = new JTextField("", 15);
-	private JTextField currPasswordInput = new JTextField("", 15);
-	private JTextField newPassInput = new JTextField("", 15);
-	private JTextField confirmChangePassInput = new JTextField("", 15);
+	private JPasswordField currPasswordInput = new JPasswordField("", 15);
+	private JPasswordField newPassInput = new JPasswordField("", 15);
+	private JPasswordField confirmChangePassInput = new JPasswordField("", 15);
 	private JButton changePassButton = new JButton();
 
 	/**
@@ -115,6 +116,11 @@ public class ChangePasswordView
 						JOptionPane.showMessageDialog(frame,
 								"Account password has been changed"
 										+ " successfully!");
+						LoginView loginView = new LoginView();
+						loginView.loadGUI(mainPanel, frame);
+						changePassPanel.setVisible(false);
+						mainPanel.remove(changePassPanel);
+						frame.setTitle("Login To Your Account!");
 					} else
 					{
 						JOptionPane

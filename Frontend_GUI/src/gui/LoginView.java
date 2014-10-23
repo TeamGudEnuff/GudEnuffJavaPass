@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import backend.*;
 
@@ -33,7 +34,7 @@ public class LoginView
 	private JLabel userNameLabel = new JLabel();
 	private JLabel passwordLabel = new JLabel();
 	private JTextField userNameInput = new JTextField("", 15);
-	private JTextField passwordInput = new JTextField("", 15);
+	private JPasswordField passwordInput = new JPasswordField("", 15);
 	private JButton loginButton = new JButton();
 	private JButton changePassButton = new JButton();
 	private ChangePasswordView changePassView = new ChangePasswordView();
@@ -93,8 +94,8 @@ public class LoginView
 					if (createAccount.Success())
 					{
 						JOptionPane.showMessageDialog(frame,
-								"Account password has been changed"
-										+ " successfully!");
+								"Account login was"
+										+ " successful!");
 					} else
 					{
 						JOptionPane
