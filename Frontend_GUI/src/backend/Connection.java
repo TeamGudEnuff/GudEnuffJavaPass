@@ -20,6 +20,7 @@ import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 public class Connection
 {
@@ -91,6 +92,8 @@ public class Connection
 	        {
 	            result.StatusCode = response.getStatusLine().getStatusCode();
 	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+                HttpEntity entity = response.getEntity();
+	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
 	        }
 	        finally
 	        {
@@ -103,11 +106,39 @@ public class Connection
     		return result;
         }
 	}
-	public Result Change( ChangePasswordViewModel model)
+	public Result Change( ChangePasswordViewModel model) throws IOException
 	{
 		String requestUrl = "Change/";
+        Result result = new Result();
 
-
-		return new Result();
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try
+        {
+        	HttpUriRequest httpPost = RequestBuilder.post()
+                    .setUri(new URI(this.BaseUrl + requestUrl))
+                    .addParameter("Email", model.Email)
+                    .addParameter("OldPassword", model.OldPassword)
+                    .addParameter("NewPassword", model.NewPassword)
+                    .build();
+			
+	        CloseableHttpResponse response = httpclient.execute(httpPost);
+        
+	        try
+	        {
+	            result.StatusCode = response.getStatusLine().getStatusCode();
+	            result.StatusMessage = response.getStatusLine().getReasonPhrase();
+                HttpEntity entity = response.getEntity();
+	            result.BodyMessage = entity != null ? EntityUtils.toString(entity) : null;
+	        }
+	        finally
+	        {
+	        	response.close();
+	        }
+		}
+        finally
+        {
+            httpclient.close();
+    		return result;
+        }
 	}
 }
