@@ -116,7 +116,7 @@ public class ChangePasswordView
 						JOptionPane.showMessageDialog(frame,
 								"Account password has been changed"
 										+ " successfully!");
-						LoginView loginView = new LoginView();
+						WelcomeScreenView loginView = new WelcomeScreenView();
 						loginView.loadGUI(mainPanel, frame);
 						changePassPanel.setVisible(false);
 						mainPanel.remove(changePassPanel);

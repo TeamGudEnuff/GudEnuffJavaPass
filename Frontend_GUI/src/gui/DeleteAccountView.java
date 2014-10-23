@@ -18,21 +18,21 @@ import backend.*;
 /**
  * Created October 13th, 2014 By: Matthew Jallouk and Adam Claiborne
  * 
- * LoginView class will display the particular view to deal with the user
- * logging into our password system. This class will access the database and
+ * DeleteAccountView class will display the particular view to deal with the user
+ * deleting a particular account. This class will access the database and
  * determine if the particular username/password combination exists. If it does,
- * the user is able to login successfully, else, the database will generate an
- * error for the user.
+ * the user is able to delete the combination successfully, else, the 
+ * database will generate an error for the user.
  * 
  */
 public class DeleteAccountView
 {
-	// Define instance variables for the SignUpView class
+	// Define instance variables for the DeleteAccountView class
 	private JPanel deletePanel = new JPanel(new FlowLayout());
 	private JLabel userNameLabel = new JLabel();
 	private JTextField userNameInput = new JTextField("", 15);
 	private JLabel passwordLabel = new JLabel();
-	private JTextField passwordInput = new JTextField("", 15);
+	private JPasswordField passwordInput = new JPasswordField("", 15);
 	private JButton deleteButton = new JButton();
 	private JButton cancelButton = new JButton();
 
@@ -53,13 +53,11 @@ public class DeleteAccountView
 	}
 
 	/**
-	 * This method actually loading the LoginView GUI into the particular main
-	 * panel for viewing.
+	 * This method actually loading the DeleteAccountView GUI into the 
+	 * particular main panel for viewing.
 	 * 
-	 * @param mainPanel
-	 *            primary panel that holds all sub-panels
-	 * @param frame
-	 *            frame that holds the main panel
+	 * @param mainPanel            primary panel that holds all sub-panels
+	 * @param frame		           frame that holds the main panel
 	 */
 	public void loadGUI(final JPanel mainPanel, final JFrame frame)
 	{
@@ -73,20 +71,20 @@ public class DeleteAccountView
 		frame.setSize(350, 300);
 
 		/*
-		 * This action listener will log the user into the system by determining
+		 * This action listener will delete the user in the system by determining
 		 * if their email/password combination was appropriately correct.
 		 */
 		deleteButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
-				Connection test = new Connection();
+				Connection connect = new Connection();
 				String username = userNameInput.getText();
 				String password = passwordInput.getText();
 				try
 				{
 					Result createAccount;
-					createAccount = test.delete(new DeleteAccountViewModel(
+					createAccount = connect.delete(new DeleteAccountViewModel(
 							username, password));
 					if (createAccount.Success())
 					{
@@ -95,7 +93,7 @@ public class DeleteAccountView
 						// Re-direct to home page
 
 						SignUpView signUpView = new SignUpView();
-						signUpView.loadGUI(frame);
+						signUpView.loadGUI(mainPanel, frame);
 						deletePanel.setVisible(false);
 						mainPanel.remove(deletePanel);
 						frame.setTitle("Create an Account");
@@ -119,14 +117,14 @@ public class DeleteAccountView
 		});
 
 		/*
-		 * This action listener will display the ChangePasswordView GUI screen.
+		 * This action listener will display the LoginView GUI screen.
 		 */
 		cancelButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent arg0)
 			{
 				LoginView loginScreen = new LoginView();
-				loginScreen.loadGUI(frame);
+				loginScreen.loadGUI(mainPanel, frame);
 				deletePanel.setVisible(false);
 				mainPanel.remove(deletePanel);
 				frame.setTitle("Log In To Your Account");
