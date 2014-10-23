@@ -1,4 +1,5 @@
 package gui;
+
 /** Created October 13th, 2014
  * By: Matthew Jallouk and Adam Claiborne
  *  
@@ -23,9 +24,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import backend.*;
 
-public class LoginView {
-	
-	//Define instance variables for the SignUpView class
+public class LoginView
+{
+
+	// Define instance variables for the SignUpView class
 	private JPanel loginPanel = new JPanel(new FlowLayout());
 	private JLabel userNameLabel = new JLabel();
 	private JLabel passwordLabel = new JLabel();
@@ -35,10 +37,12 @@ public class LoginView {
 	private JButton changePassButton = new JButton();
 	private ChangePasswordView changePassView = new ChangePasswordView();
 
-	/** Constructor that will set up the properties for the particular view.
+	/**
+	 * Constructor that will set up the properties for the particular view.
 	 * 
 	 */
-	public LoginView(){
+	public LoginView()
+	{
 		userNameLabel.setText("Username: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		passwordLabel.setText("Password: ");
@@ -49,13 +53,17 @@ public class LoginView {
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 
-	/** This method actually loading the LoginView GUI into the particular  
-	 * main panel for viewing.
+	/**
+	 * This method actually loading the LoginView GUI into the particular main
+	 * panel for viewing.
 	 * 
-	 * @param mainPanel				primary panel that holds all sub-panels
-	 * @param frame					frame that holds the main panel
+	 * @param mainPanel
+	 *            primary panel that holds all sub-panels
+	 * @param frame
+	 *            frame that holds the main panel
 	 */
-	public void loadGUI(final JPanel mainPanel, final JFrame frame){
+	public void loadGUI(final JPanel mainPanel, final JFrame frame)
+	{
 		mainPanel.add(loginPanel);
 		loginPanel.add(userNameLabel);
 		loginPanel.add(userNameInput);
@@ -63,44 +71,54 @@ public class LoginView {
 		loginPanel.add(passwordInput);
 		loginPanel.add(loginButton);
 		loginPanel.add(changePassButton);
-		frame.setSize(350,300);
-		
-		/* This action listener will log the user into the system by determining
-		 *  if their username/password combination was appropriately correct.
+		frame.setSize(350, 300);
+
+		/*
+		 * This action listener will log the user into the system by determining
+		 * if their username/password combination was appropriately correct.
 		 */
-		loginButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0){
+		loginButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				Connection test = new Connection();
 				String username = userNameInput.getText();
 				String password = passwordInput.getText();
-				try {
+				try
+				{
 					Result createAccount;
-					createAccount = test.login(
-							new LogInViewModel(username, password));
-					if (createAccount.Success()){
-						System.out.println("Account password has been changed " +
-								"successfully!");
-					}else{
+					createAccount = test.login(new LogInViewModel(username,
+							password));
+					if (createAccount.Success())
+					{
+						System.out.println("Account password has been changed "
+								+ "successfully!");
+					} else
+					{
 						System.out.println("Something went wrong!");
 					}
-				} catch (IOException e1) {
+				} catch (IOException e1)
+				{
 					e1.printStackTrace();
-				} catch(URISyntaxException uri){
+				} catch (URISyntaxException uri)
+				{
 					uri.printStackTrace();
 				}
 			}
 		});
-		
-		/* This action listener will display the ChangePasswordView GUI screen.
-		 * 
+
+		/*
+		 * This action listener will display the ChangePasswordView GUI screen.
 		 */
-		changePassButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
+		changePassButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				changePassView.loadGUI(mainPanel, frame);
 				loginPanel.setVisible(false);
 				mainPanel.remove(loginPanel);
 				frame.setTitle("Change Your Password");
-			}	
+			}
 		});
 	}
 }

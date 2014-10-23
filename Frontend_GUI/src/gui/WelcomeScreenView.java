@@ -1,4 +1,5 @@
 package gui;
+
 /** Created October 13th, 2014
  * By: Matthew Jallouk and Adam Claiborne
  * 
@@ -19,26 +20,30 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class WelcomeScreenView {
-	
-	//Define instance variables for the WelcomeScreenView class
+public class WelcomeScreenView
+{
+
+	// Define instance variables for the WelcomeScreenView class
 	private LoginView loginView = new LoginView();
 	private SignUpView signUpView = new SignUpView();
-	private ChangePasswordView changePassView = new ChangePasswordView();	
+	private ChangePasswordView changePassView = new ChangePasswordView();
 	private final JPanel mainPanel = new JPanel(new BorderLayout());
 
-	/** Constructor to create the WelcomeScreenView for panels to be added. 
-	 *  Creates the first panel to be added.
+	/**
+	 * Constructor to create the WelcomeScreenView for panels to be added.
+	 * Creates the first panel to be added.
 	 * 
-	 * @param frame					frame that holds the main panel
+	 * @param frame
+	 *            frame that holds the main panel
 	 */
-	public void loadGUI(final JFrame frame){
+	public void loadGUI(final JFrame frame)
+	{
 		final JPanel welcomePanel = new JPanel(new FlowLayout());
 		JLabel welcomeLabel = new JLabel();
 		JButton loginButton = new JButton();
 		JButton createAccountButton = new JButton();
 		JButton changePassButton = new JButton();
-		
+
 		welcomeLabel.setText("Welcome to the Login Place!");
 		welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 25));
 
@@ -48,49 +53,55 @@ public class WelcomeScreenView {
 		createAccountButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		changePassButton.setText("Change Password");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		
+
 		frame.add(mainPanel);
 		mainPanel.add(welcomePanel);
 		welcomePanel.add(welcomeLabel);
 		welcomePanel.add(createAccountButton);
 		welcomePanel.add(loginButton);
 		welcomePanel.add(changePassButton);
-		
+
 		frame.setVisible(true);
 		frame.setEnabled(true);
-		frame.setSize(500,200);
+		frame.setSize(500, 200);
 		frame.setResizable(false);
 		frame.setTitle("Welcome to Login!");
-		
-		/* Action listener to show the LoginScreenView
-		 *  
+
+		/*
+		 * Action listener to show the LoginScreenView
 		 */
-		loginButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
+		loginButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				loginView.loadGUI(mainPanel, frame);
 				welcomePanel.setVisible(false);
-				mainPanel.remove(welcomePanel);	
+				mainPanel.remove(welcomePanel);
 				frame.setTitle("Login Here!");
 			}
 		});
-		
-		/* Action listener to show the CreateAccountScreenView
-		 *  
+
+		/*
+		 * Action listener to show the CreateAccountScreenView
 		 */
-		createAccountButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
+		createAccountButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				signUpView.loadGUI(mainPanel, frame);
 				welcomePanel.setVisible(false);
 				frame.remove(welcomePanel);
 				frame.setTitle("Create Your Account You Goofball");
 			}
 		});
-		
-		/* Action listener to show the ChangePasswordScreenView
-		 *  
+
+		/*
+		 * Action listener to show the ChangePasswordScreenView
 		 */
-		changePassButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
+		changePassButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{
 				changePassView.loadGUI(mainPanel, frame);
 				welcomePanel.setVisible(false);
 				frame.remove(welcomePanel);

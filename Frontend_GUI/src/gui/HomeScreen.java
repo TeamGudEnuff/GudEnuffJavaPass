@@ -1,4 +1,5 @@
 package gui;
+
 /** Created October 13th, 2014
  * By: Matthew Jallouk and Adam Claiborne
  *  
@@ -9,25 +10,30 @@ package gui;
 
 import javax.swing.JFrame;
 
-public class HomeScreen {
-	
-	//Instance variables
+public class HomeScreen
+{
+
+	// Instance variables
 	private static JFrame frame;
-	
-	/** Main method to launch the application.
+
+	/**
+	 * Main method to launch the application.
 	 * 
 	 */
-	public static void main(String[] args){
+	public static void main(String[] args)
+	{
 		createGUI();
 		WelcomeScreenView gui = new WelcomeScreenView();
 		gui.loadGUI(frame);
 	}
-	
-	/** Initializes the main frame to show up on the screen.
+
+	/**
+	 * Initializes the main frame to show up on the screen.
 	 * 
 	 */
-	public static void createGUI(){
+	public static void createGUI()
+	{
 		frame = new JFrame();
 	}
-	
+
 }
