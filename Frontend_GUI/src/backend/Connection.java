@@ -12,11 +12,13 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-/** Created October 14, 2014
+/**
+ * Created October 14, 2014
  * 
  * @author James
  * 
- * Connection Class that acts as a service layer to interact with a RESTful 
+ *         Connection Class that acts as a service layer to interact with a
+ *         RESTful
  * 
  */
 public class Connection
@@ -27,222 +29,230 @@ public class Connection
 	{
 		this.BaseUrl = "http://r4clucky14-001-site8.smarterasp.net/api/Account/";
 	}
+
 	public Connection(String BaseUrl)
 	{
 		this.BaseUrl = BaseUrl;
 	}
-	
 
 	/**
 	 * Checks to make sure the server is connecting properly.
+	 * 
 	 * @return A Result containing information from the server.
 	 * @throws IOException
 	 */
 	public Result status() throws IOException
 	{
-		//String requestUrl = "Status/";
+		// String requestUrl = "Status/";
 		String requestUrl = "";
-        Result result = new Result();
+		Result result = new Result();
 
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        try
-        {
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		try
+		{
 			HttpGet httpGet = new HttpGet(this.BaseUrl + requestUrl);
-	        CloseableHttpResponse response = httpclient.execute(httpGet);
-        
-	        try
-	        {
-	            int statusCode = response.getStatusLine().getStatusCode();
-	            String statusMessage = response.getStatusLine().getReasonPhrase();
-	            result = new Result(statusCode, statusMessage, "");
-	    		return result;
-	        }
-	        finally
-	        {
-	        	response.close();
-	        }
-		}
-        finally
-        {
-            httpclient.close();
-        }
-	}
+			CloseableHttpResponse response = httpclient.execute(httpGet);
 
+			try
+			{
+				int statusCode = response.getStatusLine().getStatusCode();
+				String statusMessage = response.getStatusLine()
+						.getReasonPhrase();
+				result = new Result(statusCode, statusMessage, "");
+				return result;
+			} finally
+			{
+				response.close();
+			}
+		} finally
+		{
+			httpclient.close();
+		}
+	}
 
 	/**
 	 * Logs In a User to the Server
-	 * @param model Contains information to be sent to the server.
+	 * 
+	 * @param model
+	 *            Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
-	 * @throws URISyntaxException 
+	 * @throws URISyntaxException
 	 */
-	public Result login( LogInViewModel model) throws IOException, URISyntaxException
+	public Result login(LogInViewModel model) throws IOException,
+			URISyntaxException
 	{
 		String requestUrl = "Login/";
-        Result result = new Result();
+		Result result = new Result();
 
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        try
-        {
-        	HttpUriRequest httpPost = RequestBuilder.post()
-                    .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.getEmail())
-                    .addParameter("Password", model.getPassword())
-                    .build();
-			
-	        CloseableHttpResponse response = httpclient.execute(httpPost);
-        
-	        try
-	        {
-	            int statusCode = response.getStatusLine().getStatusCode();
-	            String statusMessage = response.getStatusLine().getReasonPhrase();
-                HttpEntity entity = response.getEntity();
-                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
-	            result = new Result(statusCode, statusMessage, bodyMessage);
-	    		return result;
-	        }
-	        finally
-	        {
-	        	response.close();
-	        }
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		try
+		{
+			HttpUriRequest httpPost = RequestBuilder.post()
+					.setUri(new URI(this.BaseUrl + requestUrl))
+					.addParameter("Email", model.getEmail())
+					.addParameter("Password", model.getPassword()).build();
+
+			CloseableHttpResponse response = httpclient.execute(httpPost);
+
+			try
+			{
+				int statusCode = response.getStatusLine().getStatusCode();
+				String statusMessage = response.getStatusLine()
+						.getReasonPhrase();
+				HttpEntity entity = response.getEntity();
+				String bodyMessage = entity != null ? EntityUtils
+						.toString(entity) : null;
+				result = new Result(statusCode, statusMessage, bodyMessage);
+				return result;
+			} finally
+			{
+				response.close();
+			}
+		} finally
+		{
+			httpclient.close();
 		}
-        finally
-        {
-            httpclient.close();
-        }
 	}
-	
-	
+
 	/**
 	 * Creates a new Account on the Server
-	 * @param model Contains information to be sent to the server.
+	 * 
+	 * @param model
+	 *            Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
-	 * @throws URISyntaxException 
+	 * @throws URISyntaxException
 	 */
-	public Result create( CreateViewModel model) throws IOException, URISyntaxException
+	public Result create(CreateViewModel model) throws IOException,
+			URISyntaxException
 	{
 		String requestUrl = "Create/";
-        Result result = new Result();
+		Result result = new Result();
 
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        try
-        {
-        	HttpUriRequest httpPost = RequestBuilder.post()
-                    .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.getEmail())
-                    .addParameter("Password", model.getPassword())
-                    .addParameter("ConfirmPassword", model.getConfirmPassword())
-                    .build();
-			
-	        CloseableHttpResponse response = httpclient.execute(httpPost);
-        
-	        try
-	        {
-	            int statusCode = response.getStatusLine().getStatusCode();
-	            String statusMessage = response.getStatusLine().getReasonPhrase();
-                HttpEntity entity = response.getEntity();
-                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
-	            result = new Result(statusCode, statusMessage, bodyMessage);
-	    		return result;
-	        }
-	        finally
-	        {
-	        	response.close();
-	        }
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		try
+		{
+			HttpUriRequest httpPost = RequestBuilder
+					.post()
+					.setUri(new URI(this.BaseUrl + requestUrl))
+					.addParameter("Email", model.getEmail())
+					.addParameter("Password", model.getPassword())
+					.addParameter("ConfirmPassword", model.getConfirmPassword())
+					.build();
+
+			CloseableHttpResponse response = httpclient.execute(httpPost);
+
+			try
+			{
+				int statusCode = response.getStatusLine().getStatusCode();
+				String statusMessage = response.getStatusLine()
+						.getReasonPhrase();
+				HttpEntity entity = response.getEntity();
+				String bodyMessage = entity != null ? EntityUtils
+						.toString(entity) : null;
+				result = new Result(statusCode, statusMessage, bodyMessage);
+				return result;
+			} finally
+			{
+				response.close();
+			}
+		} finally
+		{
+			httpclient.close();
 		}
-        finally
-        {
-            httpclient.close();
-        }
 	}
 
-	
 	/**
 	 * Allows the ability to Change Password for an Account.
-	 * @param model Contains information to be sent to the server.
+	 * 
+	 * @param model
+	 *            Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
-	 * @throws URISyntaxException 
+	 * @throws URISyntaxException
 	 */
-	public Result change( ChangePasswordViewModel model) throws IOException, URISyntaxException
+	public Result change(ChangePasswordViewModel model) throws IOException,
+			URISyntaxException
 	{
 		String requestUrl = "Change/";
-        Result result = new Result();
+		Result result = new Result();
 
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        try
-        {
-        	HttpUriRequest httpPost = RequestBuilder.post()
-                    .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.getEmail())
-                    .addParameter("OldPassword", model.getOldPassword())
-                    .addParameter("NewPassword", model.getNewPassword())
-                    .addParameter("ConfirmNewPassword", model.getConfirmNewPassword())
-                    .build();
-			
-	        CloseableHttpResponse response = httpclient.execute(httpPost);
-        
-	        try
-	        {
-	            int statusCode = response.getStatusLine().getStatusCode();
-	            String statusMessage = response.getStatusLine().getReasonPhrase();
-                HttpEntity entity = response.getEntity();
-                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
-	            result = new Result(statusCode, statusMessage, bodyMessage);
-	    		return result;
-	        }
-	        finally
-	        {
-	        	response.close();
-	        }
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		try
+		{
+			HttpUriRequest httpPost = RequestBuilder
+					.post()
+					.setUri(new URI(this.BaseUrl + requestUrl))
+					.addParameter("Email", model.getEmail())
+					.addParameter("OldPassword", model.getOldPassword())
+					.addParameter("NewPassword", model.getNewPassword())
+					.addParameter("ConfirmNewPassword",
+							model.getConfirmNewPassword()).build();
+
+			CloseableHttpResponse response = httpclient.execute(httpPost);
+
+			try
+			{
+				int statusCode = response.getStatusLine().getStatusCode();
+				String statusMessage = response.getStatusLine()
+						.getReasonPhrase();
+				HttpEntity entity = response.getEntity();
+				String bodyMessage = entity != null ? EntityUtils
+						.toString(entity) : null;
+				result = new Result(statusCode, statusMessage, bodyMessage);
+				return result;
+			} finally
+			{
+				response.close();
+			}
+		} finally
+		{
+			httpclient.close();
 		}
-        finally
-        {
-            httpclient.close();
-        }
 	}
-
 
 	/**
 	 * Allows the ability to delete the Account
-	 * @param model Contains information to be sent to the server.
+	 * 
+	 * @param model
+	 *            Contains information to be sent to the server.
 	 * @return A Result containing information from the server.
 	 * @throws IOException
-	 * @throws URISyntaxException 
+	 * @throws URISyntaxException
 	 */
-	public Result delete( DeleteAccountViewModel model) throws IOException, URISyntaxException
+	public Result delete(DeleteAccountViewModel model) throws IOException,
+			URISyntaxException
 	{
 		String requestUrl = "Delete/";
-        Result result = new Result();
+		Result result = new Result();
 
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        try
-        {
-        	HttpUriRequest httpPost = RequestBuilder.post()
-                    .setUri(new URI(this.BaseUrl + requestUrl))
-                    .addParameter("Email", model.getEmail())
-                    .build();
-			
-	        CloseableHttpResponse response = httpclient.execute(httpPost);
-        
-	        try
-	        {
-	            int statusCode = response.getStatusLine().getStatusCode();
-	            String statusMessage = response.getStatusLine().getReasonPhrase();
-                HttpEntity entity = response.getEntity();
-                String bodyMessage = entity != null ? EntityUtils.toString(entity) : null;
-	            result = new Result(statusCode, statusMessage, bodyMessage);
-	    		return result;
-	        }
-	        finally
-	        {
-	        	response.close();
-	        }
+		CloseableHttpClient httpclient = HttpClients.createDefault();
+		try
+		{
+			HttpUriRequest httpPost = RequestBuilder.post()
+					.setUri(new URI(this.BaseUrl + requestUrl))
+					.addParameter("Email", model.getEmail()).build();
+
+			CloseableHttpResponse response = httpclient.execute(httpPost);
+
+			try
+			{
+				int statusCode = response.getStatusLine().getStatusCode();
+				String statusMessage = response.getStatusLine()
+						.getReasonPhrase();
+				HttpEntity entity = response.getEntity();
+				String bodyMessage = entity != null ? EntityUtils
+						.toString(entity) : null;
+				result = new Result(statusCode, statusMessage, bodyMessage);
+				return result;
+			} finally
+			{
+				response.close();
+			}
+		} finally
+		{
+			httpclient.close();
 		}
-        finally
-        {
-            httpclient.close();
-        }
 	}
 }

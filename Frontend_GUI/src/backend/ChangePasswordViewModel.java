@@ -51,6 +51,7 @@ public class ChangePasswordViewModel
 	{
 		return this.newPassword;
 	}
+
 	/**
 	 * 
 	 * @return String Representation of Confirm New Password

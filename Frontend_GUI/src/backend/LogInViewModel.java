@@ -1,10 +1,11 @@
 package backend;
 
-/** Created October 13th, 2014
- *  
+/**
+ * Created October 13th, 2014
+ * 
  * @author James
- *
- * Log In View Model for Connecting to the Server
+ * 
+ *         Log In View Model for Connecting to the Server
  */
 public class LogInViewModel
 {
@@ -14,15 +15,17 @@ public class LogInViewModel
 	/**
 	 * Constructor for Log In View Model
 	 * 
-	 * @param email The Email of the User to Log in
-	 * @param password The Password of the User to Log in
+	 * @param email
+	 *            The Email of the User to Log in
+	 * @param password
+	 *            The Password of the User to Log in
 	 */
 	public LogInViewModel(String email, String password)
 	{
 		this.email = email;
 		this.password = password;
 	}
-	
+
 	/**
 	 * 
 	 * @return Returns User's Email
@@ -31,6 +34,7 @@ public class LogInViewModel
 	{
 		return this.email;
 	}
+
 	/**
 	 * 
 	 * @return Return's User's Password

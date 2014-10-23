@@ -1,4 +1,5 @@
 package gui;
+
 /** Created October 13th, 2014
  * By: Matthew Jallouk and Adam Claiborne
  * 
@@ -25,21 +26,21 @@ import backend.*;
 
 public class ChangePasswordView
 {
-
-	//Define instance variables for the ChangePasswordView class
+	// Define instance variables for the ChangePasswordView class
 	private JPanel changePassPanel = new JPanel(new FlowLayout());
 	private JLabel userNameLabel = new JLabel();
 	private JLabel currPasswordLabel = new JLabel();
 	private JLabel newPassLabel = new JLabel();
 	private JLabel confirmChangePassLabel = new JLabel();
-	private JTextArea accountConditions = new JTextArea("", 7,20);
+	private JTextArea accountConditions = new JTextArea("", 7, 20);
 	private JTextField userNameInput = new JTextField("", 15);
 	private JTextField currPasswordInput = new JTextField("", 15);
 	private JTextField newPassInput = new JTextField("", 15);
 	private JTextField confirmChangePassInput = new JTextField("", 15);
 	private JButton changePassButton = new JButton();
-	
-	/** Constructor to setup the ChangePassword Panel to be added to the frame
+
+	/**
+	 * Constructor to setup the ChangePassword Panel to be added to the frame
 	 * 
 	 */
 	public ChangePasswordView()
@@ -51,26 +52,33 @@ public class ChangePasswordView
 		newPassLabel.setText("New Password: ");
 		newPassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		confirmChangePassLabel.setText("Confirm Password: ");
-		confirmChangePassLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		confirmChangePassLabel.setFont(new Font("Times New Roman", Font.BOLD,
+				18));
 		changePassButton.setText("Confirm Password Change!");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
-		
-		accountConditions.setText("Your email must have an '@' symbol in it." +
-				"\nYour password must have lowercase, uppercase, numbers and " +
-				"special symbols (!, &, *, ?)");
+
+		accountConditions
+				.setText("Your email must have an '@' symbol in it."
+						+ "\nYour password must have lowercase, uppercase, numbers and "
+						+ "special symbols (!, &, *, ?)");
 		accountConditions.setLineWrap(true);
 		accountConditions.setWrapStyleWord(true);
 		accountConditions.setEnabled(false);
 		accountConditions.setForeground(Color.BLACK);
 		accountConditions.setFont(new Font("Time New Roman", Font.BOLD, 16));
+
 	}
-	
-	/** This method loads the ChangePassword panel onto the main frame.
+
+	/**
+	 * This method loads the ChangePassword panel onto the main frame.
 	 * 
-	 * @param mainPanel				primary panel that holds all sub-panels
-	 * @param frame					frame that holds the main panel
+	 * @param mainPanel
+	 *            primary panel that holds all sub-panels
+	 * @param frame
+	 *            frame that holds the main panel
 	 */
-	public void loadGUI(final JPanel mainPanel, final JFrame frame){
+	public void loadGUI(final JPanel mainPanel, final JFrame frame)
+	{
 		mainPanel.add(changePassPanel);
 		changePassPanel.add(userNameLabel);
 		changePassPanel.add(userNameInput);
@@ -82,37 +90,46 @@ public class ChangePasswordView
 		changePassPanel.add(confirmChangePassInput);
 		changePassPanel.add(accountConditions);
 		changePassPanel.add(changePassButton);
-		frame.setSize(350,400);
-		
-		/* This action listener will talk to the database to change the password
+		frame.setSize(350, 400);
+
+		/*
+		 * This action listener will talk to the database to change the password
 		 * of the particular username inputed.
-		 * 
 		 */
-		changePassButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
+		changePassButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
 				Connection test = new Connection();
 				String username = userNameInput.getText();
 				String oldPass = currPasswordInput.getText();
 				String newPass = newPassInput.getText();
 				String confirmNewPass = confirmChangePassInput.getText();
-				try {
+				try
+				{
 					Result createAccount;
-					createAccount = test.change(
-							new ChangePasswordViewModel(username, oldPass, newPass, confirmNewPass));
-					if (createAccount.Success()){
-						JOptionPane.showMessageDialog(frame, 
-									"Account password has been changed" +
-									" successfully!");
-					}else{
-						JOptionPane.showMessageDialog(frame, 
-									"Account password changed failed!\n" +
-									"Either your password confirms didn't\nmatch " +
-									"or your username/password doesn't\nfit our " +
-									"standards.");
+					createAccount = test.change(new ChangePasswordViewModel(
+							username, oldPass, newPass, confirmNewPass));
+					if (createAccount.Success())
+					{
+						JOptionPane.showMessageDialog(frame,
+								"Account password has been changed"
+										+ " successfully!");
+					} else
+					{
+						JOptionPane
+								.showMessageDialog(
+										frame,
+										"Account password changed failed!\n"
+												+ "Either your password confirms didn't\nmatch "
+												+ "or your username/password doesn't\nfit our "
+												+ "standards.");
 					}
-				} catch (IOException e1) {
+				} catch (IOException e1)
+				{
 					e1.printStackTrace();
-				} catch(URISyntaxException uri){
+				} catch (URISyntaxException uri)
+				{
 					uri.printStackTrace();
 				}
 			}
