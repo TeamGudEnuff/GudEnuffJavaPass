@@ -26,7 +26,7 @@ public class Connection
 
 	public Connection()
 	{
-		this.BaseUrl = "http://r4clucky14-001-site8.smarterasp.net/api/Account";
+		this.BaseUrl = "http://r4clucky14-001-site8.smarterasp.net/api/Account/";
 	}
 	public Connection(String BaseUrl)
 	{
