@@ -45,7 +45,7 @@ public class LoginView
 	 */
 	public LoginView()
 	{
-		userNameLabel.setText("Username: ");
+		userNameLabel.setText("     Email: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		passwordLabel.setText("Password: ");
 		passwordLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));

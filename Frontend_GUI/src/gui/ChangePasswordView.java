@@ -46,7 +46,7 @@ public class ChangePasswordView
 	 */
 	public ChangePasswordView()
 	{
-		userNameLabel.setText("Username: ");
+		userNameLabel.setText("   Email: ");
 		userNameLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		currPasswordLabel.setText("Current Password: ");
 		currPasswordLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
