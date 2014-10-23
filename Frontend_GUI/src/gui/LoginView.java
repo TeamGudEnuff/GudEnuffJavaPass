@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
 import backend.*;
 
 public class LoginView
@@ -37,6 +39,7 @@ public class LoginView
 	private JPasswordField passwordInput = new JPasswordField("", 15);
 	private JButton loginButton = new JButton();
 	private JButton changePassButton = new JButton();
+	private JButton deleteButton = new JButton();
 	private ChangePasswordView changePassView = new ChangePasswordView();
 
 	/**
@@ -53,6 +56,8 @@ public class LoginView
 		loginButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		changePassButton.setText("Change Password");
 		changePassButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		deleteButton.setText("Delete Account");
+		deleteButton.setFont(new Font("Times New Roman", Font.BOLD, 18));
 	}
 
 	/**
@@ -73,6 +78,7 @@ public class LoginView
 		loginPanel.add(passwordInput);
 		loginPanel.add(loginButton);
 		loginPanel.add(changePassButton);
+		loginPanel.add(deleteButton);
 		frame.setSize(350, 300);
 
 		/*
@@ -122,6 +128,17 @@ public class LoginView
 			public void actionPerformed(ActionEvent arg0)
 			{
 				changePassView.loadGUI(mainPanel, frame);
+				loginPanel.setVisible(false);
+				mainPanel.remove(loginPanel);
+				frame.setTitle("Change Your Password");
+			}
+		});
+		deleteButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent arg0)
+			{				
+				DeleteAccountView deleteView = new DeleteAccountView();
+				deleteView.loadGUI(mainPanel, frame);
 				loginPanel.setVisible(false);
 				mainPanel.remove(loginPanel);
 				frame.setTitle("Change Your Password");

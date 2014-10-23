@@ -232,7 +232,8 @@ public class Connection
 		{
 			HttpUriRequest httpPost = RequestBuilder.post()
 					.setUri(new URI(this.BaseUrl + requestUrl))
-					.addParameter("Email", model.getEmail()).build();
+					.addParameter("Email", model.getEmail())
+					.addParameter("Password", model.getPassword()).build();
 
 			CloseableHttpResponse response = httpclient.execute(httpPost);
 

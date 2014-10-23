@@ -7,7 +7,8 @@ package backend;
  */
 public class DeleteAccountViewModel
 {
-	public String email;
+	private String email;
+	private String password;
 
 	/**
 	 * Constructor for Delete Account View Model
@@ -15,9 +16,10 @@ public class DeleteAccountViewModel
 	 * @param email
 	 *            Email for Account to Delete
 	 */
-	public DeleteAccountViewModel(String email)
+	public DeleteAccountViewModel(String email, String password)
 	{
 		this.email = email;
+		this.password = password;
 	}
 
 	/**
@@ -26,5 +28,9 @@ public class DeleteAccountViewModel
 	public String getEmail()
 	{
 		return this.email;
+	}
+	public String getPassword()
+	{
+		return this.password;
 	}
 }
